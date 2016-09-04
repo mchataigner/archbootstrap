@@ -1,0 +1,97 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=r1509.4f19700
+pkgname=prezto-moot
+pkgdesc="Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes."
+url="https://github.com/mchataigner/prezto/"
+arch=('any')
+license=('MIT')
+depends=('zsh>=4.3.17')
+makedepends=('git' 'coreutils' 'sed')
+source=('git@github.com/mchataigner/prezto.git' 'install')
+options=('!strip')
+install='install'
+md5sums=('SKIP' 'SKIP')
+_gitname='prezto'
+
+backup=('etc/zsh/zlogin' 'etc/zsh/zlogout' 'etc/zsh/zshenv' 'etc/zsh/zshrc')
+
+pkgver() {
+		cd "$srcdir/$_gitname"
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+		cd $srcdir/$_gitname
+		git submodule update --init --recursive
+		git submodule foreach git pull origin master
+
+		mkdir -p $srcdir/etc/zsh
+		
+		rm -f $srcdir/etc/zsh/*
+		
+		echo "source /etc/zsh/zpreztorc" > "$srcdir/etc/zsh/zshrc"
+		echo "source /usr/lib/prezto/init.zsh" >> "$srcdir/etc/zsh/zshrc"
+		
+		
+		sed -i 's#\${ZDOTDIR:-\$HOME}/\.zprezto/#/usr/lib/prezto/#g' $srcdir/$_gitname/init.zsh
+#		sed -i 's#\${ZDOTDIR:-\$HOME}/\.zprezto#/usr/lib/prezto/#g' $srcdir/$_gitname/modules/debug/functions/trace-prezto
+		
+		for entry in ${backup[@]}; do
+				rcfile=$(basename $entry)
+				if [ -f $srcdir/$_gitname/runcoms/$rcfile ]; then
+						echo "source /usr/lib/prezto/runcoms/$rcfile" >> "$srcdir/etc/zsh/$rcfile"
+				fi
+		done
+
+		cat > $srcdir/etc/zsh/zpreztorc <<EOF
+source /usr/lib/prezto/runcoms/zpreztorc
+zstyle ':prezto:module:editor' key-bindings 'emacs'
+
+# Auto convert .... to ../..
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+
+zstyle ':prezto:module:editor:info:keymap:primary' format '>>>'
+
+zstyle ':prezto:module:prompt' theme 'skwp'
+
+zstyle ':prezto:load' pmodule \
+	'archive' \
+  'command-not-found' \
+  'completion' \
+  'directory' \
+  'editor' \
+  'environment' \
+	'fasd' \
+  'git' \
+  'gnu-utility' \
+  'history' \
+  'pacman' \
+  'spectrum' \
+  'ssh' \
+  'terminal' \
+  'tmux' \
+  'utility' \
+  'wakeonlan' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'prompt' \
+
+
+zstyle ':prezto:module:tmux:auto-start' local 'no'
+zstyle ':prezto:module:tmux:auto-start' remote 'no'
+EOF
+}
+
+package() {
+		mkdir -p $pkgdir/usr/lib/prezto
+		cp -r $srcdir/$_gitname/* $pkgdir/usr/lib/prezto
+		
+		mkdir -p $pkgdir/usr/share/doc/prezto
+		mv $pkgdir/usr/lib/prezto/*.md $pkgdir/usr/share/doc/prezto
+		
+		mkdir -p $pkgdir/etc
+		cp -r $srcdir/etc/zsh $pkgdir/etc
+}
