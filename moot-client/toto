@@ -1,0 +1,102 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=1
+pkgname=moot
+pkgdesc="Dummy package to handle all my dependencies."
+url="https://github.com/mchataigner/archbootstrat/"
+arch=('any')
+license=('MIT')
+depends=('zsh')
+#depends=('zsh>=4.3.17' 'alsa-utils' 'ammonite' 'android-tools' 'arch-intsall-scrip' 'autoconf' 'autoenv-git' 'autojump' 'automake' 'awesome' 'bash-completion' 'bind-tools' 'binutils' 'btrfs-progs' 'byobu' 'bzip2' 'chromui' 'chromium-pepper-flash' 'chromium-widevine' 'clojure' 'cmake' 'coreutils' 'cryptsetup' 'cups' 'cups-pdf' 'device-mapper' 'dfc' 'diffutils' 'digikam' 'dolphin' 'e2fsprogs' 'efibootmgr' 'emacs-nox' 'evince' 'exfat-utils' 'expect' 'fakeroot' 'fasd' 'ffmpeg' 'file' 'filesystem' 'finch' 'findutils' 'fping' 'gcc' 'gcc-libs' 'gdb' 'gettext' 'gimp' 'glibc' 'go' 'gparted' 'gptfdisk' 'grep' 'grub' 'gwenview' 'gzip' 'hdparm' 'htop' 'httpie' 'i3lock-color' 'iftop' 'inetutils' 'iotop' 'ipmitool' 'iproute2' 'iputils' 'ipython' 'ipython2' 'ipython2-notebook' 'jdk8-openjdk' 'jupyter' 'jupyter-notebook' 'kexec-tools' 'keychain' 'konsole' 'less' 'lftp' 'libbsd' 'libtool' 'lm_sensors' 'logrotate' 'lsb-release' 'lshw' 'lsof' 'lvm2' 'm4' 'make' 'mate-icon-theme' 'maven' 'mdadm' 'meld' 'mtr' 'nano' 'nautilus' 'netctl' 'networkmanager' 'network-manager-applet' 'networkmanager-openconnect' 'networkmanager-vpnc' 'networkmanager-openvpn' 'nmap' 'ntfs-3g' 'openconnect' 'openjdk8-doc' 'openjdk8-src' 'openssh' 'os-prober' 'otf-fira-code' 'oxygen-icons' 'oxygen-icons-svg' 'oxygen-gtk2' 'p7zip' 'package-query' 'pacman' 'parallel' 'paramano' 'parted' 'pasystray' 'pavucontrol' 'pciutils' 'pcmciautils' 'peco' 'pidgin-sipe' 'pkg-config' 'pkgfile' 'powertop' 'procps-ng' 'protobuf' 'psmisc' 'pulseaudio' 'pulseaudio-alsa' 'pulseaudio-zeroconf' 'pv' 'python-pip' 'python-setuptools' 'python-virtualenv' 'python-virtualenvwrapper' 'python2-pip' 'python2-setuptools' 'python2-virtualenv' 'qemu' 'quicksynergy' 'rawtherapee' 'redshift' 'reiserfsprogs' 'rsync' 'ruby' 'rust' 'rust-book-git' 's-nail' 'samba' 'sbt' 'scala-docs' 'scala-sources' 'scala' 'scrot' 'seahorse' 'sed' 'shadow' 'shotwell' 'skypeorlinux-bin' 'source-highlight' 'spotify' 'strace' 'sublime-text-dev' 'subversion' 'sudo' 'system-config-printer' 'systemd-sysvcompat' 'tar' 'thrift' 'thunderbird' 'tlp' 'tlp-rdw' 'traceroute' 'transmission-qt' 'tree' 'ttf-fira-code' 'unrar' 'unzip' 'usbutils' 'util-linux' 'gvim' 'virtualbox' 'virtualbox-host-dkms' 'visualvm' 'vlc' 'wakeonlan' 'wget' 'which' 'xautolock' 'xbindkeys' 'xboxdrv' 'xclip' 'xdotool' 'xf86-input-libinput' 'xf86-input-mouse' 'xf86-video-intel' 'xorg-server' 'xorg-server-utils' 'xorg-xauth' 'xorg-xev' 'xorg-xinit' 'xorg-xkill' 'xorg-xwininfo' 'yaourt' 'zip' 'zsh')
+makedepends=('git' 'coreutils' 'sed')
+source=('git@github.com/mchataigner/prezto.git' 'install')
+options=('!strip')
+#install='install'
+md5sums=('SKIP' 'SKIP')
+_gitname='prezto'
+
+backup=('etc/zsh/zlogin' 'etc/zsh/zlogout' 'etc/zsh/zshenv' 'etc/zsh/zshrc')
+
+# pkgver() {
+# 		cd "$srcdir/$_gitname"
+# 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# }
+
+build() {
+
+# 		cd $srcdir/$_gitname
+# 		git submodule update --init --recursive
+# 		git submodule foreach git pull origin master
+
+# 		mkdir -p $srcdir/etc/zsh
+		
+# 		rm -f $srcdir/etc/zsh/*
+		
+# 		echo "source /etc/zsh/zpreztorc" > "$srcdir/etc/zsh/zshrc"
+# 		echo "source /usr/lib/prezto/init.zsh" >> "$srcdir/etc/zsh/zshrc"
+		
+		
+# 		sed -i 's#\${ZDOTDIR:-\$HOME}/\.zprezto/#/usr/lib/prezto/#g' $srcdir/$_gitname/init.zsh
+# #		sed -i 's#\${ZDOTDIR:-\$HOME}/\.zprezto#/usr/lib/prezto/#g' $srcdir/$_gitname/modules/debug/functions/trace-prezto
+		
+# 		for entry in ${backup[@]}; do
+# 				rcfile=$(basename $entry)
+# 				if [ -f $srcdir/$_gitname/runcoms/$rcfile ]; then
+# 						echo "source /usr/lib/prezto/runcoms/$rcfile" >> "$srcdir/etc/zsh/$rcfile"
+# 				fi
+# 		done
+
+# 		cat > $srcdir/etc/zsh/zpreztorc <<TOTO
+# source /usr/lib/prezto/runcoms/zpreztorc
+# zstyle ':prezto:module:editor' key-bindings 'emacs'
+
+# # Auto convert .... to ../..
+# zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+
+# zstyle ':prezto:module:editor:info:keymap:primary' format '>>>'
+
+# zstyle ':prezto:module:prompt' theme 'skwp'
+
+# zstyle ':prezto:load' pmodule \
+# 	'archive' \
+#   'command-not-found' \
+#   'completion' \
+#   'directory' \
+#   'editor' \
+#   'environment' \
+# 	'fasd' \
+#   'git' \
+#   'gnu-utility' \
+#   'history' \
+#   'pacman' \
+#   'spectrum' \
+#   'ssh' \
+#   'terminal' \
+#   'tmux' \
+#   'utility' \
+#   'wakeonlan' \
+#   'syntax-highlighting' \
+#   'history-substring-search' \
+#   'prompt' \
+#
+# zstyle ':prezto:module:tmux:auto-start' local 'no'
+# zstyle ':prezto:module:tmux:auto-start' remote 'no'
+# TOTO
+
+}
+
+package() {
+		# mkdir -p $pkgdir/usr/lib/prezto
+		# cp -r $srcdir/$_gitname/* $pkgdir/usr/lib/prezto
+		
+		# mkdir -p $pkgdir/usr/share/doc/prezto
+		# mv $pkgdir/usr/lib/prezto/*.md $pkgdir/usr/share/doc/prezto
+		
+		# mkdir -p $pkgdir/etc
+		# cp -r $srcdir/etc/zsh $pkgdir/etc
+}
+
+install() {
+}

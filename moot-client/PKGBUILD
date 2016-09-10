@@ -1,0 +1,15 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=1
+pkgname=moot-client
+pkgdesc="Dummy package to handle all common my dependencies."
+url="https://github.com/mchataigner/archbootstrat/"
+arch=('any')
+license=('MIT')
+depends=('alsa-utils' 'ammonite' 'android-tools' 'awesome' 'chromium-pepper-flash' 'chromium-widevine' 'chromium' 'clojure' 'digikam' 'dolphin' 'evince' 'ffmpeg' 'gimp' 'gparted' 'gvim' 'gwenview' 'i3lock-color' 'konsole' 'mate-icon-theme' 'meld' 'nautilus' 'network-manager-applet' 'networkmanager' 'networkmanager-openconnect' 'networkmanager-openvpn' 'networkmanager-vpnc' 'otf-fira-code' 'oxygen-gtk2' 'oxygen-icons' 'oxygen-icons-svg' 'paramano' 'pasystray' 'pavucontrol' 'pidgin-sipe' 'quicksynergy' 'rawtherapee' 'redshift' 'scrot' 'seahorse' 'shotwell' 'skypeforlinux-bin' 'spotify' 'sublime-text-dev' 'system-config-printer' 'thunderbird' 'transmission-qt' 'ttf-fira-code' 'virtualbox' 'virtualbox-host-dkms' 'visualvm' 'vlc' 'xautolock' 'xbindkeys' 'xboxdrv' 'xclip' 'xdotool' 'xf86-input-libinput' 'xf86-input-mouse' 'xf86-video-intel' 'xorg-server' 'xorg-server-utils' 'xorg-xauth' 'xorg-xev' 'xorg-xinit' 'xorg-xkill' 'xorg-xwininfo' 'moot-common')
+makedepends=()
+source=()
+options=('!strip')
+md5sums=()
+_gitname='moot-client'

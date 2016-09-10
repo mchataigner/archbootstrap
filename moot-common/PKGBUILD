@@ -1,0 +1,21 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=1
+pkgname=moot-common
+pkgdesc="Dummy package to handle all common my dependencies."
+url="https://github.com/mchataigner/archbootstrat/"
+arch=('any')
+license=('MIT')
+makedepends=('coreutils')
+depends=('arch-install-scripts' 'autoenv-git' 'autoconf' 'autojump' 'automake' 'bash-completion' 'bind-tools' 'binutils' 'btrfs-progs' 'byobu' 'bzip2' 'cmake' 'coreutils' 'cryptsetup' 'cups' 'cups-pdf' 'device-mapper' 'dfc' 'diffutils' 'e2fsprogs' 'efibootmgr' 'emacs-nox' 'exfat-utils' 'expect' 'fakeroot' 'fasd' 'file' 'filesystem' 'finch' 'findutils' 'fping' 'gcc' 'gcc-libs' 'gdb' 'gettext' 'glibc' 'go' 'gptfdisk' 'grep' 'grub' 'gzip' 'hdparm' 'htop' 'httpie' 'iftop' 'inetutils' 'iotop' 'ipmitool' 'iproute2' 'iputils' 'ipython' 'ipython2' 'ipython2-notebook' 'jdk8-openjdk' 'jupyter' 'jupyter-notebook' 'kexec-tools' 'keychain' 'less' 'lftp' 'libbsd' 'libtool' 'lm_sensors' 'logrotate' 'lsb-release' 'lshw' 'lsof' 'lvm2' 'm4' 'make' 'maven' 'mdadm' 'mtr' 'nano' 'netctl' 'nmap' 'ntfs-3g' 'openconnect' 'openjdk8-doc' 'openjdk8-src' 'openssh' 'os-prober' 'p7zip' 'package-query' 'pacman' 'parallel' 'parted' 'pciutils' 'pcmciautils' 'peco' 'pkg-config' 'pkgfile' 'powertop' 'procps-ng' 'protobuf' 'psmisc' 'pulseaudio' 'pulseaudio-alsa' 'pulseaudio-zeroconf' 'pv' 'python-pip' 'python-setuptools' 'python-virtualenv' 'python-virtualenvwrapper' 'python2-pip' 'python2-setuptools' 'python2-virtualenv' 'qemu' 'reiserfsprogs' 'rsync' 'ruby' 'rust' 'rust-book-git' 's-nail' 'samba' 'sbt' 'scala' 'scala-docs' 'scala-sources' 'sed' 'shadow' 'source-highlight' 'strace' 'subversion' 'sudo' 'systemd-sysvcompat' 'tar' 'thrift' 'tlp' 'tlp-rdw' 'traceroute' 'tree' 'unrar' 'unzip' 'usbutils' 'util-linux' 'wakeonlan' 'wget' 'which' 'zip' 'zsh')
+makedepends=()
+source=()
+options=('!strip')
+md5sums=()
+_gitname='moot-common'
+
+package() {
+		cd "$pkgdir"
+		echo pouet > moot-common
+}

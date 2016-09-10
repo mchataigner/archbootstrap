@@ -1,7 +1,7 @@
 # Maintainer: Eriner <M@tthamilton.com>
 
 pkgrel=1
-pkgver=r1509.4f19700
+pkgver=r1510.da6244d
 pkgname=prezto-moot
 pkgdesc="Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes."
 url="https://github.com/mchataigner/prezto/"
@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('zsh>=4.3.17')
 makedepends=('git' 'coreutils' 'sed')
-source=('git@github.com/mchataigner/prezto.git' 'install')
+source=('git://github.com/mchataigner/prezto.git' 'install')
 options=('!strip')
 install='install'
 md5sums=('SKIP' 'SKIP')
