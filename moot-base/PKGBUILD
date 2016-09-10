@@ -1,0 +1,16 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=1
+pkgname=moot-base
+pkgdesc="Dummy package to handle all common my dependencies."
+url="https://github.com/mchataigner/archbootstrat/"
+arch=('any')
+license=('MIT')
+makedepends=('coreutils')
+depends=('base' 'base-devel' 'linux-tools'  'arch-install-scripts' 'autojump' 'bash-completion' 'bind-tools' 'btrfs-progs' 'byobu' 'cups' 'cups-pdf' 'curl' 'dfc' 'efibootmgr' 'emacs-nox' 'exfat-utils' 'expect' 'fasd' 'fping' 'gptfdisk' 'grub' 'hdparm' 'htop' 'iftop' 'iotop' 'ipython' 'kexec-tools' 'keychain' 'lftp' 'libbsd' 'lm_sensors' 'lsb-release' 'lshw' 'lsof' 'lvm2' 'mdadm' 'mtr' 'nmap' 'ntfs-3g' 'openconnect' 'openssh' 'os-prober' 'p7zip' 'parallel' 'parted' 'peco' 'pkgfile' 'powertop' 'pulseaudio' 'pulseaudio-alsa' 'pulseaudio-zeroconf' 'pv' 'qemu' 'rsync' 's-nail' 'source-highlight' 'strace' 'tlp' 'tlp-rdw' 'traceroute' 'tree' 'unrar' 'unzip' 'wakeonlan' 'wget' 'zip' 'zsh')
+makedepends=()
+source=()
+options=('!strip')
+md5sums=()
+_gitname='moot-base'

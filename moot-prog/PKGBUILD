@@ -1,0 +1,17 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=1
+pkgname=moot-prog
+pkgdesc="Dummy package to handle all common my dependencies."
+url="https://github.com/mchataigner/archbootstrat/"
+arch=('any')
+license=('MIT')
+makedepends=('coreutils')
+depends=('moot-base' 'autoenv-git' 'cmake' 'finch' 'gdb' 'go' 'httpie' 'ipmitool' 'ipython2' 'ipython2-notebook' 'jdk8-openjdk' 'jupyter' 'jupyter-notebook' 'maven' 'openjdk8-doc' 'openjdk8-src' 'protobuf' 'python-pip' 'python-setuptools' 'python-virtualenv' 'python-virtualenvwrapper' 'python2-pip' 'python2-setuptools' 'python2-virtualenv' 'ruby' 'rust' 'rust-book-git' 'samba' 'sbt' 'scala' 'scala-docs' 'scala-sources' 'subversion' 'thrift')
+makedepends=()
+source=()
+options=('!strip')
+md5sums=()
+_gitname='moot-prog'
+
