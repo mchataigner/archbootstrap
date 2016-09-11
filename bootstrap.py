@@ -65,7 +65,9 @@ def build():
     os.system("makepkg -si --noconfirm")
     os.chdir("..")
     os.system("yaourt -Pi --noconfirm moot-base")
-    os.system("yaourt -Pi --noconfirm prezto-moot")
+    os.chdir("prezto-moot")
+    os.system("makepkg -si --noconfirm")
+    os.chdir("../..")
 
 if __name__ == "__main__":
     if os.getuid() != 0:
