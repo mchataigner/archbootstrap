@@ -22,6 +22,9 @@ def create_base_user(name, supplementary_groups = list(), passwd = False):
         if passwd:
             os.system("passwd {0}".format(name))
         user = pwd.getpwnam(name)
+    for g in supplementary_groups:
+        if name not in grp.getgrnam(g).gr_mem:
+            os.system("usermod -aG " + g + " " + name)
     os.chown("/home/"+name,user.pw_uid,user.pw_gid)
 
 def install_required_packages():
@@ -59,7 +62,7 @@ def build():
 if __name__ == "__main__":
     if os.getuid() != 0:
         raise PermissionError("must run as root")
-    create_base_user("m.chataigner", list("wheel"), True)
+    create_base_user("m.chataigner", list("sudo", "wheel"), True)
     create_base_user("admin")
     install_required_packages()
     setup_sudoers()
