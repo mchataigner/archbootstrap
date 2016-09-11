@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import grp, pwd, os, shutil
+import os.path
 import http.client
 
 def create_base_user(name, supplementary_groups = list(), passwd = False):
@@ -46,7 +47,14 @@ def setup_sudoers():
     conn.close()
 
 def fetch_repo():
-    os.system("git clone https://github.com/mchataigner/archbootstrap.git")
+    if os.path.isdir("archbootstrap"):
+        if not os.path.isdir("archbootstrap/.git"):
+            shutil.rmtree("archbootstrap")
+            os.system("git clone https://github.com/mchataigner/archbootstrap.git")
+        else:
+            os.system("git fetch --all && git reset --hard origin/master")
+    else:
+        os.system("git clone https://github.com/mchataigner/archbootstrap.git")
 
 def build():
     os.chdir("archbootstrap")
