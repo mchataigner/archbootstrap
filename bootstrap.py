@@ -25,7 +25,10 @@ def create_base_user(name, supplementary_groups = list(), passwd = False):
     os.chown("/home/"+name,user.pw_uid,user.pw_gid)
 
 def install_required_packages():
-    os.system("pacman -S --noconfirm --needed base base-devel curl wget")
+    os.system("pacman -S --noconfirm --needed base")
+    os.system("pacman -S --noconfirm --needed base-devel")
+    os.system("pacman -S --noconfirm --needed linux-tools")
+    os.system("pacman -S --noconfirm --needed git python curl")
 
 def setup_sudoers():
     conn = http.client.HTTPSConnection("raw.githubusercontent.com")

@@ -4,6 +4,7 @@ install_required_packages() {
 	pacman -Syu --noconfirm
 	pacman -S --noconfirm --needed base
 	pacman -S --noconfirm --needed base-devel
+	pacman -S --noconfirm --needed linux-tools
 	pacman -S --noconfirm --needed git python curl
 }
 
