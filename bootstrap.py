@@ -52,7 +52,6 @@ def build():
     os.chdir("..")
     os.system("yaourt -Pi --noconfirm moot-base")
     os.system("yaourt -Pi --noconfirm prezto-moot")
-    os.system("chsh -s /usr/bin/zsh")
 
 if __name__ == "__main__":
     if os.getuid() != 0:
@@ -62,10 +61,11 @@ if __name__ == "__main__":
     install_required_packages()
     setup_sudoers()
     admin = pwd.getpwnam("admin")
+    os.system("chsh -s /usr/bin/zsh")
+    os.system("chsh -s /usr/bin/zsh m.chataigner")
+    os.system("chsh -s /usr/bin/zsh admin")
     os.setregid(admin.pw_gid, admin.pw_gid)
     os.setreuid(admin.pw_uid, admin.pw_uid)
     os.chdir("/home/admin")
     fetch_repo()
     build()
-    os.system("chsh -s /usr/bin/zsh m.chataigner")
-    os.system("chsh -s /usr/bin/zsh admin")
