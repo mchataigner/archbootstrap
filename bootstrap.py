@@ -70,7 +70,7 @@ def build():
 if __name__ == "__main__":
     if os.getuid() != 0:
         raise PermissionError("must run as root")
-    create_base_user("m.chataigner", list("sudo", "wheel"), True)
+    create_base_user("m.chataigner", ["sudo", "wheel"], True)
     create_base_user("admin")
     install_required_packages()
     setup_sudoers()
