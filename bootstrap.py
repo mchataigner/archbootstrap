@@ -46,12 +46,12 @@ def build():
     os.chdir("archbootstrap")
     os.system("git submodule update --init")
     os.chdir("package-query-git")
-    os.system("makepkg -si")
+    os.system("makepkg -si --noconfirm")
     os.chdir("../yaourt-moot")
-    os.system("makepkg -si")
+    os.system("makepkg -si --noconfirm")
     os.chdir("..")
-    os.system("yaourt -Pi moot-base")
-    os.system("yaourt -Pi prezto-moot")
+    os.system("yaourt -Pi --noconfirm moot-base")
+    os.system("yaourt -Pi --noconfirm prezto-moot")
     os.system("chsh -s /usr/bin/zsh")
 
 if __name__ == "__main__":
