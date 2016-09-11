@@ -37,11 +37,11 @@ def install_required_packages():
 def setup_sudoers():
     conn = http.client.HTTPSConnection("raw.githubusercontent.com")
     conn.connect()
-    conn.request("GET", "/mchataigner/archbootstrap/master/etc/sudoers.d/admin")
+    conn.request("GET", "/mchataigner/archbootstrap/master/moot-base/admin_sudoers")
     resp = conn.getresponse()
     if resp.code == 200:
         sudoercontent = resp.read()
-        f = os.open("/etc/sudoers.d/admin", os.O_CREAT | os.O_WRONLY, int("0440", 8))
+        f = os.open("/etc/sudoers.d/tmp_admin", os.O_CREAT | os.O_WRONLY, int("0440", 8))
         os.write(f, sudoercontent)
         os.close(f)
     conn.close()

@@ -14,3 +14,7 @@ source=()
 options=('!strip')
 md5sums=()
 _gitname='moot-base'
+
+package() {
+	cp admin_sudoers $pkgdir/etc/sudoers.d/admin
+}
