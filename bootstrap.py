@@ -50,25 +50,46 @@ def fetch_repo():
     if os.path.isdir("archbootstrap"):
         shutil.rmtree("archbootstrap")
     os.system("git clone https://github.com/mchataigner/archbootstrap.git")
+    os.chdir("archbootstrap")
+    os.system("git submodule update --init")
 
 def clean_repo():
     if os.path.isdir("archbootstrap"):
         shutil.rmtree("archbootstrap")
 
+def pre_build():
+    # remove wrong version of yaourt
+    if not os.system("pacman -Q yaourt"):
+        os.system("pacman -R --noconfirm yaourt")
+    if not os.system("pacman -Q yaourt-git"):
+        os.system("pacman -R --noconfirm yaourt-git")
+    # remove wrong version of package-query
+    if not os.system("pacman -Q package-query"):
+        os.system("pacman -R --noconfirm package-query")
+    # remove wrong version of prezto
+    if not os.system("pacman -Q prezto-git"):
+        os.system("pacman -R --noconfirm prezto-git")
+
 def build():
-    os.chdir("archbootstrap")
-    os.system("git submodule update --init")
-    os.chdir("package-query-git")
-    os.system("makepkg -si --noconfirm")
-    os.chdir("../yaourt-moot")
-    os.system("makepkg -si --noconfirm")
-    os.chdir("../moot-sudoer")
+    # install correct version of package-query if needed
+    if os.system("pacman -Q package-query-git"):
+        os.chdir("package-query-git")
+        os.system("makepkg -si --noconfirm")
+        os.chdir("..")
+    # intall correct version of yaourt if needed
+    if os.system("pacman -Q yaourt-moot"):
+        os.chdir("yaourt-moot")
+        os.system("makepkg -si --noconfirm")
+        os.chdir("..")
+    os.chdir("moot-sudoer")
     os.system("makepkg -si --noconfirm")
     os.chdir("..")
     os.system("yaourt -Pi --noconfirm moot-base")
-    os.chdir("prezto-moot")
-    os.system("makepkg -si --noconfirm")
-    os.chdir("../..")
+    if os.system("pacman -Q prezto-moot"):
+        os.chdir("prezto-moot")
+        os.system("makepkg -si --noconfirm")
+        os.chdir("..")
+    os.chdir("..")
 
 if __name__ == "__main__":
     if os.getuid() != 0:
@@ -81,6 +102,7 @@ if __name__ == "__main__":
     os.system("chsh -s /usr/bin/zsh")
     os.system("chsh -s /usr/bin/zsh m.chataigner")
     os.system("chsh -s /usr/bin/zsh admin")
+    pre_build()
     os.setregid(admin.pw_gid, admin.pw_gid)
     os.setreuid(admin.pw_uid, admin.pw_uid)
     os.chdir("/home/admin")

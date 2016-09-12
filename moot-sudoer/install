@@ -1,5 +1,5 @@
 #!/bin/bash
 
-post_install() {
+pre_install() {
 	rm -f /etc/sudoers.d/tmp_admin
 }
