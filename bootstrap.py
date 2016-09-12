@@ -117,6 +117,7 @@ def build():
     os.chdir("..")
 
 if __name__ == "__main__":
+    os.environ["TMPDIR"] = "/tmp"
     RE_INSTALL = len(sys.argv) > 1 and sys.argv[1] == "-i"
     if RE_INSTALL:
         print("will reisntall aur packages")
