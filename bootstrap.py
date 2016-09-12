@@ -39,7 +39,7 @@ def create_base_user(name, groups = list(), sgroups = list(), passwd = False):
         if passwd:
             os.system("passwd {0}".format(name))
         user = pwd.getpwnam(name)
-    for g in supplementary_groups:
+    for g in groups + sgroups:
         if name not in grp.getgrnam(g).gr_mem:
             os.system("usermod -aG " + g + " " + name)
     os.chown("/home/"+name,user.pw_uid,user.pw_gid)
