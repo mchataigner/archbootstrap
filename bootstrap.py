@@ -35,6 +35,8 @@ def install_required_packages():
     os.system("pacman -S --noconfirm --needed git python curl")
 
 def setup_sudoers():
+    if os.path.isfile("/etc/sudoers.d/admin"):
+        return
     conn = http.client.HTTPSConnection("raw.githubusercontent.com")
     conn.connect()
     conn.request("GET", "/mchataigner/archbootstrap/master/moot-base/admin_sudoers")
