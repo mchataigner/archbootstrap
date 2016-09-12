@@ -17,7 +17,8 @@ install='install'
 _gitname='moot-base'
 
 package() {
-	mkdir -p $pkgdir/etc/sudoers.d/
+	mkdir -p $pkgdir/etc/sudoers.d
+	chmod 750 $pkgdir/etc/sudoers.d
 	cp admin_sudoers $pkgdir/etc/sudoers.d/admin
 	chmod 440 $pkgdir/etc/sudoers.d/admin
 }
