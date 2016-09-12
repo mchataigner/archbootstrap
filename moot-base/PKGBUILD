@@ -1,6 +1,6 @@
 # Maintainer: Eriner <M@tthamilton.com>
 
-pkgrel=1
+pkgrel=2
 pkgver=1
 pkgname=moot-base
 pkgdesc="Dummy package to handle all common my dependencies."
@@ -16,5 +16,6 @@ md5sums=()
 _gitname='moot-base'
 
 package() {
+	mkdir -p $pkgdir/etc/sudoers.d/
 	cp admin_sudoers $pkgdir/etc/sudoers.d/admin
 }

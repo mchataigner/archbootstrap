@@ -51,6 +51,10 @@ def fetch_repo():
         shutil.rmtree("archbootstrap")
     os.system("git clone https://github.com/mchataigner/archbootstrap.git")
 
+def clean_repo():
+    if os.path.isdir("archbootstrap"):
+        shutil.rmtree("archbootstrap")
+
 def build():
     os.chdir("archbootstrap")
     os.system("git submodule update --init")
@@ -80,3 +84,4 @@ if __name__ == "__main__":
     os.chdir("/home/admin")
     fetch_repo()
     build()
+    clean_repo()
