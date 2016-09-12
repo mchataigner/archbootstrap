@@ -69,6 +69,9 @@ def pre_build():
     # remove wrong version of prezto
     if not os.system("pacman -Q prezto-git"):
         os.system("pacman -R --noconfirm prezto-git")
+    # remove grml-zsh-config
+    if not os.system("pacman -Q grml-zsh-config"):
+        os.system("pacman -R --noconfirm grml-zsh-config")
 
 def build():
     # install correct version of package-query if needed
