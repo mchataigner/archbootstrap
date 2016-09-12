@@ -48,13 +48,8 @@ def setup_sudoers():
 
 def fetch_repo():
     if os.path.isdir("archbootstrap"):
-        if not os.path.isdir("archbootstrap/.git"):
-            shutil.rmtree("archbootstrap")
-            os.system("git clone https://github.com/mchataigner/archbootstrap.git")
-        else:
-            os.system("git fetch --all && git reset --hard origin/master")
-    else:
-        os.system("git clone https://github.com/mchataigner/archbootstrap.git")
+        shutil.rmtree("archbootstrap")
+    os.system("git clone https://github.com/mchataigner/archbootstrap.git")
 
 def build():
     os.chdir("archbootstrap")
