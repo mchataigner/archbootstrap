@@ -118,6 +118,8 @@ def build():
 
 if __name__ == "__main__":
     os.environ["TMPDIR"] = "/tmp"
+    if os.path.isdir("/home/admin/archbootstrap"):
+        shutil.rmtree("/home/admin/archbootstrap")
     RE_INSTALL = len(sys.argv) > 1 and sys.argv[1] == "-i"
     if RE_INSTALL:
         print("will reisntall aur packages")
