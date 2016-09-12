@@ -10,9 +10,9 @@ license=('MIT')
 makedepends=('coreutils')
 depends=('sudo')
 makedepends=()
-source=()
+source=('admin_sudoers')
 options=('!strip')
-md5sums=()
+md5sums=('SKIP')
 _gitname='moot-base'
 
 package() {
