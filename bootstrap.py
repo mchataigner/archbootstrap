@@ -109,9 +109,9 @@ if __name__ == "__main__":
         print("will reisntall aur packages")
     if os.getuid() != 0:
         raise PermissionError("must run as root")
+    install_required_packages()
     create_base_user("m.chataigner", ["sudo", "wheel"], True)
     create_base_user("admin")
-    install_required_packages()
     setup_sudoers()
     admin = pwd.getpwnam("admin")
     os.system("chsh -s /usr/bin/zsh")
