@@ -10,16 +10,15 @@ license=('MIT')
 makedepends=('coreutils')
 depends=('sudo')
 makedepends=()
-source=('admin_sudoers')
+source=('admin_sudoers' 'install')
 options=('!strip')
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
+install='install'
 _gitname='moot-base'
 
 package() {
 	mkdir -p $pkgdir/etc/sudoers.d/
 	cp admin_sudoers $pkgdir/etc/sudoers.d/admin
+	chmod 440 $pkgdir/etc/sudoers.d/admin
 }
 
-post_install() {
-	rm -f /etc/sudoers.d/tmp_admin
-}

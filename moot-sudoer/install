@@ -1,0 +1,5 @@
+#!/bin/bash
+
+post_install() {
+	rm -f /etc/sudoers.d/tmp_admin
+}
