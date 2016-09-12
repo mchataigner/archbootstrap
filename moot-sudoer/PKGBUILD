@@ -1,0 +1,25 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=1
+pkgname=moot-sudoer
+pkgdesc="Dummy package to handle all common my dependencies."
+url="https://github.com/mchataigner/archbootstrat/"
+arch=('any')
+license=('MIT')
+makedepends=('coreutils')
+depends=('sudo')
+makedepends=()
+source=()
+options=('!strip')
+md5sums=()
+_gitname='moot-base'
+
+package() {
+	mkdir -p $pkgdir/etc/sudoers.d/
+	cp admin_sudoers $pkgdir/etc/sudoers.d/admin
+}
+
+post_install() {
+	rm -f /etc/sudoers.d/tmp_admin
+}

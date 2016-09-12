@@ -62,6 +62,8 @@ def build():
     os.system("makepkg -si --noconfirm")
     os.chdir("../yaourt-moot")
     os.system("makepkg -si --noconfirm")
+    os.chdir("../moot-sudoer")
+    os.system("makepkg -si --noconfirm")
     os.chdir("..")
     os.system("yaourt -Pi --noconfirm moot-base")
     os.chdir("prezto-moot")
