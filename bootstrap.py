@@ -27,9 +27,9 @@ def create_base_user(name, groups = list(), sgroups = list(), passwd = False):
         user = pwd.getpwnam(name)
     except KeyError:
         tmp_name = name.replace(".","")
-        groups = ",".join(supplementary_groups)
-        if len(groups) != 0:
-            group_options = "-G " + groups
+        gs = ",".join(groups + sgroups)
+        if len(gs) != 0:
+            group_options = "-G " + gs
         else:
             group_options = ""
         os.system("useradd -U {2} -d /home/{0} {1}".format(name, tmp_name, group_options))
