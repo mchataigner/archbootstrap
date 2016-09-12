@@ -7,7 +7,20 @@ import sys
 
 RE_INSTALL = False
 
-def create_base_user(name, supplementary_groups = list(), passwd = False):
+def create_base_group(name, system = False):
+    try:
+        g = grp.getgrnam(name)
+    except KeyError:
+        if system:
+            os.system("groupadd -r " + name)
+        else:
+            os.system("groupadd " + name)
+
+def create_base_user(name, groups = list(), sgroups = list(), passwd = False):
+    for g in sgroups:
+        create_base_group(g, True)
+    for g in groups:
+        create_base_group(g)
     if name not in os.listdir("/home"):
         os.mkdir("/home/" + name)
     try:
@@ -110,7 +123,7 @@ if __name__ == "__main__":
     if os.getuid() != 0:
         raise PermissionError("must run as root")
     install_required_packages()
-    create_base_user("m.chataigner", ["sudo", "wheel"], True)
+    create_base_user("m.chataigner", sgroups = ["sudo", "wheel"], passwd = True)
     create_base_user("admin")
     setup_sudoers()
     admin = pwd.getpwnam("admin")
