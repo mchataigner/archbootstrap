@@ -14,7 +14,7 @@ optdepends=('aurvote: vote for your favorite AUR packages'
 						'customizepkg: automatically modify PKGBUILD during install/upgrade'
 						'rsync: retrieve PKGBUILD from official repositories')
 provides=('yaourt')
-conflicts=('yaourt')
+conflicts=('yaourt' 'yaourt-git')
 backup=('etc/yaourtrc')
 source=('git+https://github.com/mchataigner/yaourt.git')
 md5sums=('SKIP')
