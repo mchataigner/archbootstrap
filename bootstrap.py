@@ -3,6 +3,9 @@
 import grp, pwd, os, shutil
 import os.path
 import http.client
+import sys
+
+RE_INSTALL = False
 
 def create_base_user(name, supplementary_groups = list(), passwd = False):
     if name not in os.listdir("/home"):
@@ -35,8 +38,12 @@ def install_required_packages():
     os.system("pacman -S --noconfirm --needed git python curl")
 
 def setup_sudoers():
-    if os.path.isfile("/etc/sudoers.d/admin"):
+    if os.path.isfile("/etc/sudoers.d/admin") and not RE_INSTALL:
+        if os.path.isfile("/etc/sudoers.d/tmp_admin"):
+            os.remove("/etc/sudoers.d/tmp_admin")
         return
+    if os.system("pacman -Q moot-sudoer"):
+        os.system("pacman -Rd moot-sudoer")
     conn = http.client.HTTPSConnection("raw.githubusercontent.com")
     conn.connect()
     conn.request("GET", "/mchataigner/archbootstrap/master/moot-base/admin_sudoers")
@@ -77,12 +84,12 @@ def pre_build():
 
 def build():
     # install correct version of package-query if needed
-    if os.system("pacman -Q package-query-git"):
+    if os.system("pacman -Q package-query-git") or RE_INSTALL:
         os.chdir("package-query-git")
         os.system("makepkg -si --noconfirm")
         os.chdir("..")
     # intall correct version of yaourt if needed
-    if os.system("pacman -Q yaourt-moot"):
+    if os.system("pacman -Q yaourt-moot") or RE_INSTALL:
         os.chdir("yaourt-moot")
         os.system("makepkg -si --noconfirm")
         os.chdir("..")
@@ -90,13 +97,16 @@ def build():
     os.system("makepkg -si --noconfirm")
     os.chdir("..")
     os.system("yaourt -Pi --noconfirm moot-base")
-    if os.system("pacman -Q prezto-moot"):
+    if os.system("pacman -Q prezto-moot") or RE_INSTALL:
         os.chdir("prezto-moot")
         os.system("makepkg -si --noconfirm")
         os.chdir("..")
     os.chdir("..")
 
 if __name__ == "__main__":
+    RE_INSTALL = len(sys.argv) > 1 and sys.argv[1] == "-i"
+    if RE_INSTALL:
+        print("will reisntall aur packages")
     if os.getuid() != 0:
         raise PermissionError("must run as root")
     create_base_user("m.chataigner", ["sudo", "wheel"], True)
