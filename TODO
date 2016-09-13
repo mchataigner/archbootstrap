@@ -11,3 +11,4 @@ network settings
 redshift
 - use DISPLAY in systemd services
 pacman settings
+localtime
