@@ -4,6 +4,7 @@ import grp, pwd, os, shutil
 import os.path
 import http.client
 import sys
+import getopt
 
 RE_INSTALL = False
 
@@ -95,7 +96,7 @@ def pre_build():
     if not os.system("pacman -Q grml-zsh-config"):
         os.system("pacman -R --noconfirm grml-zsh-config")
 
-def build():
+def build(flavors = list()):
     # install correct version of package-query if needed
     if os.system("pacman -Q package-query-git") or RE_INSTALL:
         os.chdir("package-query-git")
@@ -114,13 +115,20 @@ def build():
         os.chdir("prezto-moot")
         os.system("makepkg -si --noconfirm")
         os.chdir("..")
+    if "client" in flavors:
+        os.system("pacman -S --noconfirm xorg xorg-apps xorg-drivers xorg-fonts")
+        os.system("yaourt -Pi moot-client")
+    if "prog" in flavors:
+        os.system("yaourt -Pi moot-prog")
     os.chdir("..")
 
 if __name__ == "__main__":
+    optlist, flavors = getopt.getopt(sys.argv[1:], "i")
+    opts = dict(optlist)
     os.environ["TMPDIR"] = "/tmp"
     if os.path.isdir("/home/admin/archbootstrap"):
         shutil.rmtree("/home/admin/archbootstrap")
-    RE_INSTALL = len(sys.argv) > 1 and sys.argv[1] == "-i"
+    RE_INSTALL = "-i" in opts
     if RE_INSTALL:
         print("will reisntall aur packages")
     if os.getuid() != 0:
@@ -138,5 +146,5 @@ if __name__ == "__main__":
     os.setreuid(admin.pw_uid, admin.pw_uid)
     os.chdir("/home/admin")
     fetch_repo()
-    build()
+    build(flavors)
     clean_repo()
