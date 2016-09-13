@@ -1,6 +1,6 @@
 # Maintainer: Eriner <M@tthamilton.com>
 
-pkgrel=1
+pkgrel=2
 pkgver=1
 pkgname=moot-sudoer
 pkgdesc="Dummy package to handle all common my dependencies."
