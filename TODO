@@ -1,0 +1,13 @@
+systemd services
+x11 settings keymap
+vconsole
+lang
+locale
+video driver
+network settings
+
+
+--
+redshift
+- use DISPLAY in systemd services
+pacman settings
