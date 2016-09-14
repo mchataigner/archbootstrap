@@ -10,17 +10,7 @@ license=('MIT')
 makedepends=('coreutils')
 depends=('moot-sudoer' 'arch-install-scripts' 'linux-headers' 'autojump' 'bash-completion' 'bind-tools' 'btrfs-progs' 'byobu' 'cups' 'cups-pdf' 'curl' 'dfc' 'efibootmgr' 'emacs-nox' 'exfat-utils' 'expect' 'fasd' 'fping' 'gptfdisk' 'grub' 'hdparm' 'htop' 'iftop' 'iotop' 'ipython' 'kexec-tools' 'keychain' 'lftp' 'libbsd' 'lm_sensors' 'lsb-release' 'lshw' 'lsof' 'lvm2' 'mdadm' 'mtr' 'nmap' 'ntfs-3g' 'openconnect' 'openssh' 'os-prober' 'p7zip' 'parallel' 'parted' 'peco' 'pkgfile' 'powertop' 'pulseaudio' 'pulseaudio-alsa' 'pulseaudio-zeroconf' 'pv' 'qemu' 'rsync' 's-nail' 'source-highlight' 'strace' 'tlp' 'tlp-rdw' 'traceroute' 'tree' 'unrar' 'unzip' 'wakeonlan' 'wget' 'zip' 'zsh')
 makedepends=()
-source=('vconsole.conf' 'locale.conf' 'install')
-install='install'
+source=()
 options=('!strip')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=()
 _gitname='moot-base'
-
-package() {
-	mkdir -p $pkgdir/etc
-	chmod 755 $pkgdir/etc
-	cp vconsole.conf $pkgdir/etc/vconsole.conf
-	chmod 644 $pkgdir/etc/vconsole.conf
-	cp locale.conf $pkgdir/etc/locale.conf
-	chmod 644 $pkgdir/etc/locale.conf
-}

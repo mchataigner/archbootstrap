@@ -1,0 +1,26 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=1
+pkgname=moot-base-config
+pkgdesc="Dummy package to handle all common my dependencies."
+url="https://github.com/mchataigner/archbootstrat/"
+arch=('any')
+license=('MIT')
+makedepends=('coreutils')
+depends=('moot-base')
+makedepends=()
+source=('vconsole.conf' 'locale.conf' 'install')
+install='install'
+options=('!strip')
+md5sums=('SKIP' 'SKIP' 'SKIP')
+_gitname='moot-base-config'
+
+package() {
+	mkdir -p $pkgdir/etc
+	chmod 755 $pkgdir/etc
+	cp vconsole.conf $pkgdir/etc/vconsole.conf
+	chmod 644 $pkgdir/etc/vconsole.conf
+	cp locale.conf $pkgdir/etc/locale.conf
+	chmod 644 $pkgdir/etc/locale.conf
+}

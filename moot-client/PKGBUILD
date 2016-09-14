@@ -9,12 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('moot-base' 'alsa-utils' 'awesome' 'ffmpeg' 'gparted' 'gvim' 'i3lock-color' 'konsole' 'network-manager-applet' 'networkmanager' 'networkmanager-openconnect' 'networkmanager-openvpn' 'networkmanager-vpnc' 'otf-fira-code' 'redshift' 'xautolock' 'xbindkeys' 'xboxdrv' 'xclip' 'xdotool' 'xorg-server-utils' 'xorg-xinit'  'ammonite' 'android-tools' 'clojure'  'chromium' 'chromium-pepper-flash' 'chromium-widevine' 'digikam' 'evince' 'gimp' 'gwenview' 'jdk8-openjdk' 'mate-icon-theme' 'meld' 'nautilus' 'oxygen-gtk2' 'oxygen-icons' 'oxygen-icons-svg' 'paramano' 'pavucontrol' 'pidgin-sipe' 'quicksynergy' 'rawtherapee' 'scrot' 'seahorse' 'shotwell' 'skypeforlinux-bin' 'spotify' 'sublime-text-dev' 'system-config-printer' 'thunderbird' 'transmission-qt' 'ttf-fira-code' 'virtualbox' 'virtualbox-host-dkms' 'visualvm' 'vlc')
 makedepends=()
-source=('10-keyboard-layout.conf')
+source=()
 options=('!strip')
-md5sums=('SKIP')
+md5sums=()
 _gitname='moot-client'
-
-package() {
-	mkdir -p $pkgdir/etc/X11/xorg.conf.d
-	cp 10-keyboard-layout.conf $pkgdir/etc/X11/xorg.conf.d/
-}

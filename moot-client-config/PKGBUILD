@@ -1,0 +1,20 @@
+# Maintainer: Eriner <M@tthamilton.com>
+
+pkgrel=1
+pkgver=1
+pkgname=moot-client-config
+pkgdesc="Dummy package to handle all common my dependencies."
+url="https://github.com/mchataigner/archbootstrat/"
+arch=('any')
+license=('MIT')
+depends=('moot-client')
+makedepends=()
+source=('10-keyboard-layout.conf')
+options=('!strip')
+md5sums=('SKIP')
+_gitname='moot-client-config'
+
+package() {
+	mkdir -p $pkgdir/etc/X11/xorg.conf.d
+	cp 10-keyboard-layout.conf $pkgdir/etc/X11/xorg.conf.d/
+}

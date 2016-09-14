@@ -4,9 +4,3 @@ pre_install() {
 	sed -i "s/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g"
 	locale-gen
 }
-
-post_upgrade() {
-}
-
-post_remove() {
-}

@@ -111,6 +111,9 @@ def build(flavors = list()):
     os.system("makepkg -si --noconfirm")
     os.chdir("..")
     os.system("yaourt -Pi --noconfirm moot-base")
+    os.chdir("moot-base-config")
+    os.system("makepkg -si --noconfirm")
+    os.chdir("..")
     if os.system("pacman -Q prezto-moot") or RE_INSTALL:
         os.chdir("prezto-moot")
         os.system("makepkg -si --noconfirm")
@@ -118,6 +121,9 @@ def build(flavors = list()):
     if "client" in flavors:
         os.system("pacman -S --noconfirm xorg xorg-apps xorg-drivers xorg-fonts")
         os.system("yaourt -Pi --noconfirm moot-client")
+        os.chdir("moot-client-config")
+        os.system("makepkg -si --noconfirm")
+        os.chdir("..")
         os.chdir("pasystray-moot")
         os.system("makepkg -si --noconfirm")
         os.chdir("..")
