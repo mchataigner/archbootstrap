@@ -119,7 +119,7 @@ def build(flavors = list()):
         os.system("pacman -S --noconfirm xorg xorg-apps xorg-drivers xorg-fonts")
         os.system("yaourt -Pi --noconfirm moot-client")
         os.chdir("pasystray-moot")
-        os.system("makepkg -si")
+        os.system("makepkg -si --noconfirm")
         os.chdir("..")
     if "prog" in flavors:
         os.system("yaourt -Pi --noconfirm moot-prog")
