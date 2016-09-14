@@ -6,6 +6,11 @@ locale
 video driver
 network settings
 
+rankmirror
+fstab
+mkinitcpio - modules hooks
+grub - install + default
+
 
 --
 redshift
