@@ -10,10 +10,9 @@ license=('MIT')
 makedepends=('coreutils')
 depends=('moot-base')
 makedepends=()
-source=('vconsole.conf' 'locale.conf' 'install')
-install='install'
+source=('vconsole.conf' 'locale.conf')
 options=('!strip')
-md5sums=('SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP')
 _gitname='moot-base-config'
 
 package() {

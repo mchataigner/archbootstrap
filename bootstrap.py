@@ -95,6 +95,8 @@ def pre_build():
     # remove grml-zsh-config
     if not os.system("pacman -Q grml-zsh-config"):
         os.system("pacman -R --noconfirm grml-zsh-config")
+    os.system("sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen")
+    os.system("locale-gen")
 
 def build(flavors = list()):
     # install correct version of package-query if needed
