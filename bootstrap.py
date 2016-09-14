@@ -63,7 +63,7 @@ def setup_sudoers():
         os.system("pacman -Rd moot-sudoer")
     conn = http.client.HTTPSConnection("raw.githubusercontent.com")
     conn.connect()
-    conn.request("GET", "/mchataigner/archbootstrap/master/moot-base/admin_sudoers")
+    conn.request("GET", "/mchataigner/archbootstrap/master/moot-sudoer/admin_sudoers")
     resp = conn.getresponse()
     if resp.code == 200:
         sudoercontent = resp.read()
