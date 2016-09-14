@@ -136,6 +136,9 @@ def build(flavors = list()):
         os.system("yaourt -Pi --noconfirm moot-prog")
     os.chdir("..")
 
+def setup_fstab():
+    os.system("genfstab -U / > /etc/fstab")
+
 def setup_mkinitcpio():
     os.system("sed -i 's/^MODULES=.*/MODULES=\"ext4\"/g' /etc/mkinitcpio.conf")
     os.system("sed -i 's/^HOOKS=.*/HOOKS=\"base udev autodetect modconf block keyboard keymap encrypt filesystems fsck\"/g' /etc/mkinitcpio.conf")
@@ -229,6 +232,7 @@ if __name__ == "__main__":
         raise PermissionError("must run as root")
     install_required_packages()
     if "-g" in opts:
+        setup_fstab()
         setup_mkinitcpio()
         setup_grub()
     create_base_user("m.chataigner", sgroups = ["sudo", "wheel"], passwd = True)
