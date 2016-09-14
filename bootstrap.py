@@ -52,7 +52,7 @@ def install_required_packages():
     os.system("pacman -S --noconfirm --needed base-devel")
     os.system("pacman -S --noconfirm --needed linux-tools")
     os.system("pacman -S --noconfirm --needed git python curl")
-    os.system("pacman -S --noconfirm --needed grub")
+    os.system("pacman -S --noconfirm --needed grub efibootmgr")
 
 def setup_sudoers():
     if os.path.isfile("/etc/sudoers.d/admin") and not RE_INSTALL:
