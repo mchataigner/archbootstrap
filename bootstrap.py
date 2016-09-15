@@ -139,6 +139,9 @@ def build(flavors = list()):
 def setup_fstab():
     os.system("genfstab -U / > /etc/fstab")
 
+def setup_localtime():
+    os.symlink("/usr/share/zoneinfo/Europe/Paris", "/etc/localtime")
+
 def setup_mkinitcpio():
     os.system("sed -i 's/^MODULES=.*/MODULES=\"ext4\"/g' /etc/mkinitcpio.conf")
     os.system("sed -i 's/^HOOKS=.*/HOOKS=\"base udev autodetect modconf block keyboard keymap encrypt filesystems fsck\"/g' /etc/mkinitcpio.conf")
@@ -238,6 +241,7 @@ if __name__ == "__main__":
     create_base_user("m.chataigner", sgroups = ["sudo", "wheel"], passwd = True)
     create_base_user("admin")
     setup_sudoers()
+    setup_localtime()
     admin = pwd.getpwnam("admin")
     os.system("chsh -s /usr/bin/zsh")
     os.system("chsh -s /usr/bin/zsh m.chataigner")
