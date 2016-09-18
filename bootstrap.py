@@ -140,7 +140,7 @@ def setup_fstab():
     os.system("genfstab -U / > /etc/fstab")
 
 def setup_localtime():
-    os.symlink("/usr/share/zoneinfo/Europe/Paris", "/etc/localtime")
+    os.system("ln -sfn ../usr/share/zoneinfo/Europe/Paris /etc/localtime")
 
 def setup_mkinitcpio():
     os.system("sed -i 's/^MODULES=.*/MODULES=\"ext4\"/g' /etc/mkinitcpio.conf")
