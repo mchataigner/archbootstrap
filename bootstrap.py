@@ -119,8 +119,8 @@ def build(flavors = list()):
     os.chdir("moot-base-config")
     os.system("makepkg -si --noconfirm")
     os.chdir("..")
-    os.system("systemctl start sshd")
-    os.system("systemctl enable sshd")
+    os.system("sudo -i systemctl start sshd")
+    os.system("sudo -i systemctl enable sshd")
     if os.system("pacman -Q prezto-moot") or RE_INSTALL:
         os.chdir("prezto-moot")
         os.system("makepkg -si --noconfirm")
@@ -225,8 +225,11 @@ def setup_grub():
         subprocess.check_output(["grub-install", "--target=x86_64", install_disk])
 
 if __name__ == "__main__":
-    optlist, flavors = getopt.getopt(sys.argv[1:], "ig")
+    optlist, flavors = getopt.getopt(sys.argv[1:], "igb")
     opts = dict(optlist)
+    if "-b" in opts:
+        build(flavors)
+        sys.exit()
     os.environ["TMPDIR"] = "/tmp"
     if os.path.isdir("/home/admin/archbootstrap"):
         shutil.rmtree("/home/admin/archbootstrap")
