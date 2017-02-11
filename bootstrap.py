@@ -119,6 +119,8 @@ def build(flavors = list()):
     os.chdir("moot-base-config")
     os.system("makepkg -si --noconfirm")
     os.chdir("..")
+    os.system("systemctl start sshd")
+    os.system("systemctl enable sshd")
     if os.system("pacman -Q prezto-moot") or RE_INSTALL:
         os.chdir("prezto-moot")
         os.system("makepkg -si --noconfirm")
