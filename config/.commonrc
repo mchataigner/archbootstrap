@@ -1,0 +1,68 @@
+#!/bin/bash
+
+[ -e /usr/bin/xdg-open ] && alias a="xdg-open"
+
+which apt-get &> /dev/null && \
+    alias inst="sudo apt-get install " && \
+    alias upd="sudo apt-get update && sudo apt-get dist-upgrade" || \
+    true
+
+which git &> /dev/null && \
+    alias gits="git s" && \
+    alias gs="git s" || \
+    true
+
+which less &> /dev/null && \
+    export LESS="-R" && ( \
+    [ -e /usr/share/source-highlight/src-hilite-lesspipe.sh ] && export LESSOPEN='|/usr/share/source-highlight/src-hilite-lesspipe.sh %s' || \
+    [ -e /usr/bin/src-hilite-lesspipe.sh ] && export LESSOPEN='|/usr/bin/src-hilite-lesspipe.sh %s' ) || \
+    true
+
+[ -d $HOME/bin ] && PATH=$PATH:$HOME/bin || true
+# [ -d $HOME/.rvm/bin ] && PATH=$PATH:$HOME/.rvm/bin || true
+# [ -s $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm || true
+
+eval $(dircolors)
+
+# which emacs &> /dev/null && \
+#     alias emacs="emacs -nw" && \
+#     alias e="emacsclient -c -nw -s $USER" && \
+#     export EDITOR="emacsclient -c -nw -s $USER" || \
+#     true
+
+which bundle &> /dev/null && \
+    alias be="bundle exec" && \
+    alias bek="bundle exec knife" && \
+    alias beb="bundle exec berks" || \
+    true
+
+[ -f $HOME/.berkshelf/config.json ] && export BERKSHELF_CONFIG=$HOME/.berkshelf/config.json || true
+
+alias cp="cp --reflink=auto"
+
+#if [ -f /usr/share/autoenv-git/activate.sh ]
+#then
+#    source /usr/share/autoenv-git/activate.sh
+#fi
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export GIT_SSH="$(which ssh)"
+export PATH
+
+if [ -f $HOME/.specificrc ]
+then
+    source $HOME/.specificrc
+fi
+
+if [ -f /usr/bin/xclip ]
+then
+    alias xcp="xclip -i -selection clipboard"
+fi
+
+if [ -f /usr/bin/steam ]
+then
+		alias steam="LD_PRELOAD='/usr/\$LIB/libstdc++.so.6 /usr/\$LIB/libgcc_s.so.1 /usr/\$LIB/libxcb.so.1 /usr/\$LIB/libgpg-error.so' /usr/bin/steam"
+fi
+
+export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+export PATH="$GEM_HOME/bin:$PATH"

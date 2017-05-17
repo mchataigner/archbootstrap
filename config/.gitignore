@@ -1,0 +1,12 @@
+*~
+.idea
+*.iml
+*.pyc
+.checkstyle
+.classpath
+.project
+.settings
+target
+*.sc
+deployer/env.sh
+.env

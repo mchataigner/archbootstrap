@@ -1,0 +1,11 @@
+[Unit]
+Description=HipChat
+Conflicts=awesomeexit.target
+
+[Service]
+ExecStart=/usr/bin/hipchat
+Environment=DISPLAY=:0
+Restart=on-failure
+
+[Install]
+WantedBy=awesome.target

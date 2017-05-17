@@ -1,0 +1,65 @@
+[user]
+	name = Mathieu Chataigner
+	email = m.chataigner@criteo.com
+
+[alias]
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	amend = "commit --amend -c HEAD"
+	amendc = "commit --amend -C HEAD"
+	b = branch
+	ci = commit
+	cit = commit -uno
+	co = checkout
+	cp = cherry-pick
+	f = fetch
+	fff = flow feature finish
+	ffp = flow feature publish
+	ffs = flow feature start
+	g = log --graph --decorate --oneline
+	ga = log --graph --decorate --oneline --all
+	gb = log --graph --decorate --oneline --branches
+	gr = log --graph --decorate --oneline --remotes
+	hub = push -u origin common
+	ign = ls-files -o -i --exclude-standard
+	log-pretty = "!git log --pretty='format:%C(auto,blue)%h%C(auto,red)%d%C(auto,yellow) %s %C(auto,green)%an%Creset, %ar'"
+	log-hist = "!git log-pretty --graph"
+	l = "!git --no-pager log-pretty --reverse -n 30"
+	lt = "!git --no-pager log-pretty --simplify-by-decoration --reverse"
+	logs = "!git l --stat -5"
+	logp = "!git l -p -1"
+	logf = log --decorate --name-status
+	ls = ls-tree --name-only HEAD
+	m = merge
+	rb = rebase -i
+	rl = reflog show --decorate
+	s = status -s
+	st = status -s -uno
+	showf = show --decorate --name-status
+	sb = show-branch
+	review = "!git push origin HEAD:refs/publish/$(git branch-name)"
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	ui = auto
+
+[core]
+	autocrlf = input
+	whitespace = trailing-space
+	excludesfile = ~/.gitignore
+#	editor = /usr/bin/emacsclient -c
+
+[github]
+	user = mchataigner
+
+[branch]
+	autosetupmerge = false
+[pull]
+	rebase = true
+[push]
+	default = simple
+[rerere]
+	enabled = 1
+[apply]
+	whitespace = fix

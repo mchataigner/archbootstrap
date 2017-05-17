@@ -1,0 +1,11 @@
+[Unit]
+Description=i3lock
+
+[Service]
+ExecStart=/usr/bin/i3lock-color -n
+Environment=DISPLAY=:0
+Restart=on-failure
+
+[Install]
+WantedBy=sleep.target
+WantedBy=suspend.target

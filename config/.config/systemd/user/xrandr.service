@@ -1,0 +1,11 @@
+[Unit]
+Description=xrandr
+
+[Service]
+ExecStart=/usr/bin/xrandr --output DP-1 --pos 0x420 --mode 1920x1080 --rotate normal --output DP-0 --pos 1920x0 --mode 1920x1080 --rotate right
+Environment=DISPLAY=:0
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=awesome.target

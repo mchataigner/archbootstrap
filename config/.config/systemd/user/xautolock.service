@@ -1,0 +1,11 @@
+[Unit]
+Description=XAutoLock
+Conflicts=awesomeexit.target
+
+[Service]
+ExecStart=/home/m.chataigner/bin/.xlock
+Environment=DISPLAY=:0
+Restart=on-failure
+
+[Install]
+WantedBy=awesome.target

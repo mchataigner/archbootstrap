@@ -1,0 +1,11 @@
+[Unit]
+Description=Light Locker
+Conflicts=awesomeexit.target
+
+[Service]
+ExecStart=/usr/bin/light-locker --lock-on-suspend
+Environment=DISPLAY=:0
+Restart=on-failure
+
+[Install]
+WantedBy=awesome.target

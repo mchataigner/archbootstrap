@@ -1,0 +1,11 @@
+[Unit]
+Description=Paramano applet
+Conflicts=awesomeexit.target
+
+[Service]
+ExecStart=/usr/bin/paramano
+Environment=DISPLAY=:0
+Restart=on-failure
+
+[Install]
+WantedBy=awesome.target
