@@ -11,10 +11,6 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
-function run_once(cmd)
-   awful.util.spawn_with_shell("run_once " .. cmd)
-end
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -43,10 +39,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.wallpaper=awful.util.getdir("config") .. "/wallpapers/wallpapers8.png"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtcd"
+terminal = "konsole"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -88,7 +83,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[5])
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -115,7 +110,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock(" %a %b %d, %H:%M:%S ", 1)
+mytextclock = awful.widget.textclock()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -167,34 +162,6 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
-kbdcfg = {}
-kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { { "us", "", "US" }, { "fr", "", "FR" }, { "fr", "bepo", "BP" } }
-kbdcfg.current = 3
-kbdcfg.widget = wibox.widget.textbox()
-kbdcfg.widget:set_text(" " .. kbdcfg.layout[kbdcfg.current][3] .. " ")
-kbdcfg.switch = function ()
-   kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
-   local t = kbdcfg.layout[kbdcfg.current]
-   naughty.notify({title = kbdcfg.cmd .. " " .. t[1] .. " " .. t[2]})
-   kbdcfg.widget:set_text(" " .. t[3] .. " ")
-   os.execute( kbdcfg.cmd .. " " .. t[1] .. " " .. t[2] )
-end
-kbdcfg.widget:buttons(
-   awful.util.table.join(
-      awful.button({ }, 1, function ()
-            awful.util.spawn("echo Left mouse button pressed.")
-            kbdcfg.switch()
-                           end
-      ),
-      awful.button({ }, 2, function ()
-            awful.util.spawn("toto")
-                           end
-      )
-   )
-)
-
-
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
@@ -224,7 +191,6 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(kbdcfg.widget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -251,7 +217,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-    awful.key({ modkey, "Control", "Shift"}, "#56", function () kbdcfg.switch() end),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -282,11 +247,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q",
-       function ()
-          awful.util.spawn("systemctl --user start awesomeexit.target")
-          awesome.quit()
-       end),
+    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -297,9 +258,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
-    awful.key({ modkey, "Mod1"     }, "l",     function ()
-          awful.util.spawn("xautolock -locknow")
-    end),
+    awful.key({ modkey, "Mod1"     }, "l",     function () awful.util.spawn("/usr/bin/i3lock") end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -314,34 +273,27 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end),
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 2%+", false) end),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 2%-", false) end),
-    awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle", false) end)
+    awful.key({ modkey }, "p", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
-    awful.key({ modkey, "Control" }, "space",  function (c) c.floating = not c.floating      end),
+    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey,           }, "o",      function (c) c.move_to_screen()               end),
+    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
-            c.minimized = not c.minimized
+            c.minimized = true
         end),
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
-		end),
-		awful.key({ modkey,           }, "u", function (c) c.urgent = not c.urgent end),
-		awful.key({ modkey, }, "a", function (c) c.above = not c.above end),
-		awful.key({ modkey, }, "b", function (c) c.below = not c.below end),
-		awful.key({ modkey, }, "s", function (c) c.sticky = not c.sticky end)
+        end)
 )
 
 -- Bind all key numbers to tags.
@@ -493,13 +445,3 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
---run_once("nm-applet")
---run_once("pasystray")
---run_once("paramano")
---run_once("pidgin")
---run_once("light-locker --lock-on-suspend")
-awful.util.spawn("systemctl --user start awesome.target")
--- awful.util.spawn_with_shell("~/.config/awesome/locker")
-
-
