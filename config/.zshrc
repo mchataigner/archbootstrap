@@ -1,3 +1,2 @@
-alias be="bundle exec"
-
-[ -f $HOME/.commonrc ] && source $HOME/.commonrc || true
+# export EDITOR="emacsclient -t"
+source $HOME/.commonrc

@@ -13,7 +13,7 @@
 (setq-default
  indent-tabs-mode t
  tab-width 2
- c-basic-offset 2
+ c-basic-offset 1
  )
 
 ;; global modes
@@ -24,7 +24,6 @@
 (require 'package)
 (setq
  package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-;                    ("marmalade" . "https://marmalade-repo.org/packages/")
                     ("melpa-stable" . "https://stable.melpa.org/packages/")
                     ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
@@ -44,6 +43,7 @@
   :pin melpa-stable)
 
 (use-package projectile
+  :pin melpa-stable
   :demand
   :init   (setq projectile-use-git-grep t)
   :config (projectile-global-mode t)
@@ -58,15 +58,18 @@
   :bind ("s-/" . undo-tree-visualize))
 
 (use-package highlight-symbol
+  :pin melpa-stable
   :diminish highlight-symbol-mode
   :commands highlight-symbol
   :bind ("s-h" . highlight-symbol))
 
 (use-package popup-imenu
+  :pin melpa-stable
   :commands popup-imenu
   :bind ("M-i" . popup-imenu))
 
 (use-package magit
+  :pin melpa-stable
   :commands magit-status magit-blame
   :init (setq
          magit-revert-buffers nil)
@@ -74,6 +77,7 @@
          ("s-b" . magit-blame)))
 
 (use-package company
+  :pin melpa-stable
   :diminish company-mode
   :commands company-mode
   :init
@@ -89,9 +93,13 @@
 ;;  (define-key company-active-map (kbd "TAB") nil))
 
 (use-package smex
+  :pin melpa-stable
 	:bind ("M-x" . smex))
 
+(use-package lua-mode)
+
 (use-package drag-stuff
+  :pin melpa-stable
 	:init (drag-stuff-global-mode 1)
 	:bind (("M-N" . drag-stuff-down)
 				 ("M-P" . drag-stuff-up)))
@@ -100,21 +108,26 @@
 ;; 	:config (setq-default save-place t))
 
 (use-package smartparens
+  :pin melpa-stable
 	:init (progn
 					(show-smartparens-global-mode t)
 					(smartparens-global-mode t)))
 
 (use-package yaml-mode
+  :pin melpa-stable
 	:mode ("\\.yml$" . yaml-mode))
 
 
 (use-package ibuffer
+  :pin melpa-stable
 	:config (setq ibuffer-expert t)
 	  :bind ("C-x C-b" . ibuffer))
 
-(use-package helm)
+(use-package helm
+  :pin melpa-stable)
 
-(use-package clojure-mode)
+(use-package clojure-mode
+  :pin melpa-stable)
 
 (use-package chef-mode)
 
@@ -122,30 +135,35 @@
 
 (use-package nginx-mode)
 
-(use-package git-commit)
+(use-package git-commit
+  :pin melpa-stable)
 
 (use-package gitconfig-mode)
 
 (use-package gitignore-mode)
 
-(use-package pandoc)
+(use-package pandoc
+  :pin melpa-stable)
 
-(use-package pandoc-mode)
+(use-package pandoc-mode
+  :pin melpa-stable)
 
 (use-package rust-mode)
 
-(use-package scala-mode2)
+(use-package systemd
+  :pin melpa-stable)
 
-(use-package systemd)
+(use-package thrift
+  :pin melpa-stable)
 
-(use-package thrift)
-
-(use-package undo-tree)
-
-(use-package protobuf-mode)
+(use-package undo-tree
+  :pin melpa-stable)
 
 (use-package groovy-mode)
 
+(use-package go-mode)
+
+(use-package protobuf-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -153,7 +171,8 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
 	 (quote
-		(protobuf-mode groovy-mode yaml-mode use-package undo-tree typescript-mode top-mode thrift systemd syslog-mode ssh-config-mode sqlup-mode shm scss-mode scala-mode2 rust-mode rainbow-mode qsimpleq-theme python-mode projectile popup-imenu pig-mode pandoc-mode pandoc nginx-mode moe-theme material-theme markdown-mode magit lua-mode log4j-mode jvm-mode json-mode jira jar-manifest-mode impatient-mode idris-mode hindent highlight-symbol helm graphene go-mode gitignore-mode gitconfig-mode git-blame fsharp-mode feature-mode espresso-theme ensime elm-mode elixir-mode dtrt-indent drag-stuff dockerfile-mode diff-hl cyberpunk-theme csv-mode csharp-mode crontab-mode company-ghc coffee-mode closure-lint-mode clojurescript-mode clojure-mode-extra-font-locking chef-mode butler basic-theme autopair auto-save-buffers-enhanced auto-indent-mode auto-complete apache-mode angular-mode ample-zen-theme ample-theme))))
+		(elixir-mode erlang php-mode markdown-mode markdown-mode+ markdown-preview-mode dockerfile-mode docker go-mode elm-mode elm-yasnippets yaml-mode use-package undo-tree thrift systemd smex smartparens rust-mode protobuf-mode projectile popup-imenu pandoc-mode pandoc nginx-mode magit lua-mode highlight-symbol helm groovy-mode gitignore-mode gitconfig-mode ensime dtrt-indent drag-stuff clojure-mode chef-mode apache-mode)))
+ '(safe-local-variable-values (quote ((chef-mode . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
