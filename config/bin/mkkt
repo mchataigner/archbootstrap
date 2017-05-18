@@ -1,0 +1,22 @@
+#!/usr/bin/expect -f
+
+set pw [lindex $argv 0];
+
+spawn ktutil
+expect "ktutil:  "
+send "addent -password -p m.chataigner@CRITEOIS.LAN -k 4 -e aes128-cts-hmac-sha1-96\n"
+expect "Password for m.chataigner@CRITEOIS.LAN: "
+send "$pw\n"
+expect "ktutil:  "
+send "addent -password -p m.chataigner@CRITEOIS.LAN -k 4 -e des3-cbc-sha1\n"
+expect "Password for m.chataigner@CRITEOIS.LAN: "
+send "$pw\n"
+expect "ktutil:  "
+send "addent -password -p m.chataigner@CRITEOIS.LAN -k 4 -e arcfour-hmac\n"
+expect "Password for m.chataigner@CRITEOIS.LAN: "
+send "$pw\n"
+expect "ktutil:  "
+send "write_kt m.chataigner.keytab\n"
+expect "ktutil:  "
+send "quit\n"
+

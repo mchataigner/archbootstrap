@@ -1,0 +1,4 @@
+#!/bin/bash
+# sudo openconnect https://fr.criteois.com -c ~m.chataigner/.vpn/vpn.crt.pem --csd-user m.chataigner --csd-wrapper /usr/local/share/criteo/vpn_csd_wrapper.sh --no-xmlpost --no-passwd --authgroup CriteoVPN  --cafile ~m.chataigner/ROOTCA-SUBCA/CriteoISSubCA.crt
+# sudo openconnect https://fr.criteois.com -c ~m.chataigner/.vpn/vpn.crt.pem --csd-user m.chataigner --csd-wrapper /usr/local/share/criteo/vpn_csd_wrapper.sh --no-xmlpost --no-passwd --authgroup CriteoVPN  --cafile /etc/ssl/certs/ca-certificates.crt
+sudo -iu admin sudo -i openconnect https://fr.criteois.com -c ~m.chataigner/.vpn/vpn.pem --csd-user m.chataigner --csd-wrapper ~m.chataigner/.vpn/vpn_csd_wrapper.sh --no-xmlpost --no-passwd --authgroup CriteoVPN  --cafile /etc/ssl/certs/ca-certificates.crt

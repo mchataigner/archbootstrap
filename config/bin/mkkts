@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read -s -p "Password: " TOTO
+FOLDER=$(dirname $0)
+expect -f ${FOLDER}/mkkt ${TOTO}
