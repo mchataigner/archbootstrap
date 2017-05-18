@@ -1,0 +1,7 @@
+[Unit]
+Description=Synergy Client
+
+[Service]
+ExecStart=/usr/bin/synergyc -f -d WARNING killdozer
+Environment=DISPLAY=:0
+Restart=on-failure

@@ -1,0 +1,7 @@
+[Unit]
+Description=Synergy Client
+
+[Service]
+ExecStart=/usr/bin/synergyc -f -d WARNING --enable-crypto %I
+Environment=DISPLAY=:0
+Restart=on-failure

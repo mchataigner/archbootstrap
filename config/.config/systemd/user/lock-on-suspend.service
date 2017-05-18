@@ -1,0 +1,10 @@
+[Unit]
+Description=lock on suspend
+
+[Service]
+Environment=DISPLAY=:0
+Restart=on-failure
+ExecStart=/home/m.chataigner/.config/awesome/awesomelock
+
+[Install]
+WantedBy=sleep.target

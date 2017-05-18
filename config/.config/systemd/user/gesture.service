@@ -1,0 +1,13 @@
+[Unit]
+Description=LibinputGesture
+Conflicts=awesomeexit.target
+
+[Service]
+ExecStart=/usr/bin/libinput-gestures-setup start
+RemainAfterExit=true
+ExecStop=/usr/bin/libinput-gestures-setup stop
+Environment=DISPLAY=:0
+Restart=on-failure
+
+[Install]
+WantedBy=awesome.target
