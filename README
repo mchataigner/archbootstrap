@@ -1,1 +1,1 @@
-curl https://raw.githubusercontent.com/mchataigner/archbootstrap/master/setup.sh | bash
+curl -L https://bit.ly/mootarch | bash
