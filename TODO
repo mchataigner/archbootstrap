@@ -8,3 +8,7 @@ rankmirror
 redshift
 - use DISPLAY in systemd services
 pacman settings
+
+
+--
+add setup for vps
