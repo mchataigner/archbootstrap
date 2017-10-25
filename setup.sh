@@ -5,7 +5,7 @@ install_required_packages() {
 	pacman -S --noconfirm --needed base
 	pacman -S --noconfirm --needed base-devel
 	pacman -S --noconfirm --needed linux-tools
-	pacman -S --noconfirm --needed git python curl ca-certificates-utils
+	pacman -S --noconfirm --needed git python curl ca-certificates-utils zsh
 	update-ca-trust
 }
 
