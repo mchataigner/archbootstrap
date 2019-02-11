@@ -126,7 +126,7 @@ def build(flavors = list()):
         os.system("makepkg -si --noconfirm")
         os.chdir("..")
     if "client" in flavors:
-        os.system("pacman -S --noconfirm xorg xorg-apps xorg-drivers xorg-fonts")
+        os.system("pacman -S --noconfirm --needed xorg xorg-apps xorg-drivers xorg-fonts")
         os.system("yaourt -Pi --noconfirm moot-client")
         os.chdir("moot-client-config")
         os.system("makepkg -si --noconfirm")
