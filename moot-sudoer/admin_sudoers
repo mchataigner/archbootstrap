@@ -1,28 +1,11 @@
-Defaults editor=/usr/bin/emacs, !env_editor
-Defaults timestamp_timeout=20
-Defaults !tty_tickets
-
-
-Cmnd_Alias  POWER       =   /usr/bin/shutdown -h now, /usr/bin/halt, /usr/bin/poweroff, /usr/bin/reboot
-Cmnd_Alias  STORAGE     =   /usr/bin/mount -o nosuid\,nodev\,noexec, /usr/bin/umount
-Cmnd_Alias  SYSTEMD     =   /usr/bin/journalctl, /usr/bin/systemctl
-Cmnd_Alias  KILL        =   /usr/bin/kill, /usr/bin/killall
-Cmnd_Alias  PKGMAN      =   /usr/bin/pacman
-Cmnd_Alias  YAOURT      =   /usr/bin/yaourt
-Cmnd_Alias  NETWORK     =   /usr/bin/netctl
-Cmnd_Alias  FIREWALL    =   /usr/bin/iptables, /usr/bin/ip6tables
-Cmnd_Alias  SHELL       =   /usr/bin/zsh, /usr/bin/bash
-%power      ALL         =   (root)  NOPASSWD: POWER
-%network    ALL         =   (root)  NOPASSWD: NETWORK
-%storage    ALL         =   (root)  NOPASSWD: STORAGE
-root        ALL         =   (ALL)   ALL
 admin       ALL         =   (root)  NOPASSWD: SHELL
 admin       ALL         =   (root)  SYSTEMD, KILL, FIREWALL
 admin       ALL         =   (root)  NOPASSWD: PKGMAN
+%admin      ALL         =   (admin) NOPASSWD: SHELL
+
 devel       ALL         =   (root)  NOPASSWD: PKGMAN
 %devel      ALL         =   (devel) NOPASSWD: SHELL
-%admin      ALL         =   (admin) NOPASSWD: SHELL
-%wheel      ALL         =   (admin) NOPASSWD: SHELL
+wheel      ALL         =   (admin) NOPASSWD: SHELL
 %sudo       ALL         =   (admin) NOPASSWD: SHELL
 %sudo       ALL         =   (admin) NOPASSWD: YAOURT
 %wheel      ALL         =   (devel) NOPASSWD: SHELL

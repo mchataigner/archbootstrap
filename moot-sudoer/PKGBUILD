@@ -10,9 +10,9 @@ license=('MIT')
 makedepends=('coreutils')
 depends=('sudo')
 makedepends=()
-source=('admin_sudoers' 'install')
+source=('common' 'admin_sudoers' 'install')
 options=('!strip')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 install='install'
 _gitname='moot-base'
 
@@ -20,6 +20,8 @@ package() {
 	mkdir -p $pkgdir/etc/sudoers.d
 	chmod 750 $pkgdir/etc/sudoers.d
 	cp admin_sudoers $pkgdir/etc/sudoers.d/admin
+	cp common $pkgdir/etc/sudoers.d/common
+	chmod 440 $pkgdir/etc/sudoers.d/common
 	chmod 440 $pkgdir/etc/sudoers.d/admin
 }
 
