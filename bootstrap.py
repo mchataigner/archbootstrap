@@ -54,6 +54,19 @@ def install_required_packages():
     os.system("pacman -S --noconfirm --needed git python curl")
     os.system("pacman -S --noconfirm --needed grub efibootmgr")
 
+
+def fetch_sudoer(name, file_name):
+    conn = http.client.HTTPSConnection("raw.githubusercontent.com")
+    conn.connect()
+    conn.request("GET", "/mchataigner/archbootstrap/master/moot-sudoer/" + name)
+    resp = conn.getresponse()
+    if resp.code == 200:
+        sudoercontent = resp.read()
+        f = os.open("/etc/sudoers.d/" + file_name, os.O_CREAT | os.O_WRONLY, int("0400", 8))
+        os.write(f, sudoercontent)
+        os.close(f)
+    conn.close()
+
 def setup_sudoers():
     if os.path.isfile("/etc/sudoers.d/admin") and not RE_INSTALL:
         if os.path.isfile("/etc/sudoers.d/tmp_admin"):
@@ -61,16 +74,8 @@ def setup_sudoers():
         return
     if os.system("pacman -Q moot-sudoer"):
         os.system("pacman -Rd moot-sudoer")
-    conn = http.client.HTTPSConnection("raw.githubusercontent.com")
-    conn.connect()
-    conn.request("GET", "/mchataigner/archbootstrap/master/moot-sudoer/admin_sudoers")
-    resp = conn.getresponse()
-    if resp.code == 200:
-        sudoercontent = resp.read()
-        f = os.open("/etc/sudoers.d/tmp_admin", os.O_CREAT | os.O_WRONLY, int("0440", 8))
-        os.write(f, sudoercontent)
-        os.close(f)
-    conn.close()
+    fetch_sudoer("admin_sudoers", "admin")
+    fetch_sudoer("common", "common")
 
 def fetch_repo():
     if os.path.isdir("archbootstrap"):
