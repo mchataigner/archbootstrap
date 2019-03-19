@@ -9,6 +9,7 @@ arch=('any')
 license=('MIT')
 makedepends=('coreutils')
 depends=('moot-base')
+backup=("etc/vconsole.conf" "etc/locale.conf")
 makedepends=()
 source=('vconsole.conf' 'locale.conf')
 options=('!strip')
@@ -18,8 +19,6 @@ _gitname='moot-base-config'
 package() {
 	mkdir -p $pkgdir/etc
 	chmod 755 $pkgdir/etc
-	cp vconsole.conf $pkgdir/etc/vconsole.conf
-	chmod 644 $pkgdir/etc/vconsole.conf
-	cp locale.conf $pkgdir/etc/locale.conf
-	chmod 644 $pkgdir/etc/locale.conf
+	install -Dm644 vconsole.conf $pkgdir/etc/vconsole.conf
+	install -Dm644 locale.conf $pkgdir/etc/locale.conf
 }
