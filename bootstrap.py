@@ -259,6 +259,7 @@ if __name__ == "__main__":
     pre_build()
     os.setregid(admin.pw_gid, admin.pw_gid)
     os.setreuid(admin.pw_uid, admin.pw_uid)
+    os.environ['HOME']="/home/admin"
     os.chdir("/home/admin")
     fetch_repo()
     build(flavors)
