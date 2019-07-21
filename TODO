@@ -15,3 +15,55 @@ add setup for vps
 
 add fail2ban
 add selinux
+
+encrypt vps
+change tinyssh port
+deactivate root login
+
+monitor pg
+backup pg
+
+choose raid setup
+install raid
+
+change disk enclosure to raid10
+setup disk enclosure
+
+setup perkeep at home
+setup encrypted perkeep at office
+setup sync
+
+setup backups for computers
+setup git mirrors
+try gitea
+
+automate install via chef/ansible/salt/terraform
+
+try xen?
+
+choose disks and buy them
+
+
+find self hosted alternatives to
+- office online
+- mail
+- notes
+- photos sync
+- calendar
+- scan
+- git
+- build server
+- repository
+- track baby events / perform stats
+- share liste de course
+- share todo
+
+- home automation
+- health tracker
+- hide cables behind my desk
+
+
+- try kube and cloud native solutions
+- security?
+
+find ways to automate
