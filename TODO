@@ -12,3 +12,6 @@ pacman settings
 
 --
 add setup for vps
+
+add fail2ban
+add selinux
