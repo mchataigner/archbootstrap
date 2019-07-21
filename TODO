@@ -67,3 +67,15 @@ find self hosted alternatives to
 - security?
 
 find ways to automate
+=======
+
+
+grub-install i386-pc??
+cryptab without decrypt file
+user passwords + root password
+clone dotfiles
+setup ssh keys
+setup hostname
+setup systemd-networkd
+add wol
+setup mirror
