@@ -1,0 +1,46 @@
+# This file is part of https://github.com/random-archer/mkinitcpio-systemd-tool
+
+# Provide ssh server in initramfs
+
+# note:
+# - tinysshd supports only ed25519 keys
+# - make sure opensshd host keys include ed25519 keys
+# - make sure remote user account also has ed25519 key pair
+
+# service dependencies:
+# - https://www.archlinux.org/packages/community/x86_64/busybox/
+# - https://www.archlinux.org/packages/community/x86_64/tinyssh/
+# - https://aur.archlinux.org/packages/tinyssh-convert/
+
+[Unit]
+Description=Initrd Vconsole setup Service
+Documentation=https://github.com/random-archer/mkinitcpio-systemd-tool/blob/master/README.md
+ConditionPathExists=/etc/initrd-release
+DefaultDependencies=no
+After=initrd-shell.service
+Before=cryptsetup-pre.target
+Requires=initrd-shell.service
+
+InitrdPath=/etc/initrd-vconsole-load.sh source=/etc/systemd/system/initrd-vconsole-load.sh
+
+[Service]
+ExecStart=/etc/initrd-vconsole-load.sh /etc/keymap.bin
+Type=oneshot
+
+[Install]
+WantedBy=sysinit.target
+
+[X-SystemdTool]
+
+# enable service
+InitrdService=enable
+
+# ensure tinyssh keys are based on openssh keys
+InitrdBuild=/etc/systemd/system/initrd-vconsole-setup.sh command=do_pack_keymap
+
+# use full busybox (provides tcpsvd applet)
+InitrdBinary=/usr/bin/busybox replace=yes
+
+# include vconsole configuration
+InitrdPath=/etc/keymap.bin source=/etc/mkinitcpio.d/keymap.bin replace=yes
+InitrdPath=/etc/keymap.utf8 source=/etc/mkinitcpio.d/keymap.utf8 replace=yes
