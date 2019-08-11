@@ -115,14 +115,5 @@ depends=(
   'zsh'
 )
 makedepends=()
-source=('emacs.service')
-md5sums=('af0c12d31cfa06e48a483420826160c9')
 options=('!strip')
 _gitname='moot-base'
-
-package() {
-  mkdir -p $pkgdir/usr/lib/systemd/system
-  cp emacs.service $pkgdir/usr/lib/systemd/system/emacs.service
-  mkdir -p $pkgdir/usr/lib/systemd/user
-  cp emacs.service $pkgdir/etc/systemd/user/emacs.service
-}

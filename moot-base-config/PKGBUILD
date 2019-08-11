@@ -11,15 +11,20 @@ makedepends=('coreutils')
 depends=('moot-base')
 backup=("etc/vconsole.conf" "etc/locale.conf")
 makedepends=()
-source=('vconsole.conf' 'locale.conf')
-md5sums=('b7afc0530626cf3d1df77134a60ee2a3'
-         '6464042aea2f6d2a7ff71878291b5bbc')
+source=('emacs.service' 'locale.conf' 'vconsole.conf')
+md5sums=('af0c12d31cfa06e48a483420826160c9'
+         '6464042aea2f6d2a7ff71878291b5bbc'
+         'b7afc0530626cf3d1df77134a60ee2a3')
 options=('!strip')
 _gitname='moot-base-config'
 
 package() {
-	mkdir -p $pkgdir/etc
-	chmod 755 $pkgdir/etc
-	install -Dm644 vconsole.conf $pkgdir/etc/vconsole.conf
-	install -Dm644 locale.conf $pkgdir/etc/locale.conf
+  mkdir -p $pkgdir/etc
+  chmod 755 $pkgdir/etc
+  install -Dm644 vconsole.conf $pkgdir/etc/vconsole.conf
+  install -Dm644 locale.conf $pkgdir/etc/locale.conf
+  mkdir -p $pkgdir/usr/lib/systemd/system
+  install -Dm644 emacs.service $pkgdir/usr/lib/systemd/system/emacs.service
+  mkdir -p $pkgdir/usr/lib/systemd/user
+  install -Dm644 emacs.service $pkgdir/etc/systemd/user/emacs.service
 }
