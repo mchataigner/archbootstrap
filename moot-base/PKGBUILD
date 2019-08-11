@@ -1,4 +1,4 @@
-# Maintainer: Eriner <M@tthamilton.com>
+# Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
 pkgrel=2
 pkgver=1
@@ -10,7 +10,14 @@ license=('MIT')
 makedepends=('coreutils')
 depends=('moot-sudoer' 'arch-install-scripts' 'linux-headers' 'autojump' 'bash-completion' 'bind-tools' 'btrfs-progs' 'byobu' 'cups' 'cups-pdf' 'curl' 'dfc' 'efibootmgr' 'emacs-nox' 'exfat-utils' 'expect' 'fasd' 'fping' 'gptfdisk' 'grub' 'hdparm' 'htop' 'iftop' 'iotop' 'ipython' 'kexec-tools' 'keychain' 'lftp' 'libbsd' 'lm_sensors' 'lsb-release' 'lshw' 'lsof' 'lvm2' 'mdadm' 'mtr' 'nmap' 'ntfs-3g' 'openconnect' 'openssh' 'os-prober' 'p7zip' 'parallel' 'parted'	'pkgfile' 'powertop' 'pulseaudio' 'pulseaudio-alsa' 'pulseaudio-zeroconf' 'pv' 'qemu' 'rsync' 's-nail' 'source-highlight' 'strace' 'tlp' 'tlp-rdw' 'traceroute' 'tree' 'unrar' 'unzip' 'wakeonlan' 'wget' 'zip' 'zsh' 'masscan' 'mdp' 'hollywood' 'ranger' 'sslscan' 'speedtest-cli' 'moreutils' 'linux-firmware' 'shellcheck' 'figlet' 'sshpass' 'sysstat' 'ruby-rainbow' 'jq' 'docker' 'docker-compose' 'paperkey' 'icdiff' 'lolcat' 'ethtool' 'smartmontools' 'gnu-netcat' 'socat' 'fzf' 'the_silver_searcher' 'lzop' 'pigz' 'mc' 'patch' 'dialog' 'downgrade' 'ncdu' 'nfs-utils' 'ntp' 'nvme-cli' 'pacman-contrib' 'psutils' 'ripgrep')
 makedepends=()
-source=()
+source=('emacs.service')
+md5sums=('af0c12d31cfa06e48a483420826160c9')
 options=('!strip')
-md5sums=()
 _gitname='moot-base'
+
+package() {
+  mkdir -p $pkgdir/usr/lib/systemd/system
+  cp emacs.service $pkgdir/usr/lib/systemd/system/emacs.service
+  mkdir -p $pkgdir/usr/lib/systemd/user
+  cp emacs.service $pkgdir/usr/lib/systemd/user/emacs.service
+}
