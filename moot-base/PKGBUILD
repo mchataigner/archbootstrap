@@ -122,5 +122,5 @@ package() {
   mkdir -p $pkgdir/usr/lib/systemd/system
   cp emacs.service $pkgdir/usr/lib/systemd/system/emacs.service
   mkdir -p $pkgdir/usr/lib/systemd/user
-  cp emacs.service $pkgdir/usr/lib/systemd/user/emacs.service
+  cp emacs.service $pkgdir/etc/systemd/user/emacs.service
 }
