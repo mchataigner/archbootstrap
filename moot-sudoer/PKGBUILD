@@ -1,4 +1,4 @@
-# Maintainer: Eriner <M@tthamilton.com>
+# Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
 pkgrel=2
 pkgver=1
@@ -12,8 +12,10 @@ depends=('sudo')
 backup=("etc/sudoers.d/common" "etc/sudoers.d/admin")
 makedepends=()
 source=('common' 'admin_sudoers' 'install')
+md5sums=('1b0864e65d9dce27a618debb8316a21d'
+         '96af035689e3656339723c6a0e798e44'
+         '100ce1aaaf96c21913d7ec3a5fdc43f6')
 options=('!strip')
-md5sums=('SKIP' 'SKIP' 'SKIP')
 install='install'
 _gitname='moot-base'
 

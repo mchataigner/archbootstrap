@@ -1,4 +1,4 @@
-# Maintainer: Eriner <M@tthamilton.com>
+# Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
 pkgrel=1
 pkgver=1
@@ -12,8 +12,9 @@ depends=('moot-base')
 backup=("etc/vconsole.conf" "etc/locale.conf")
 makedepends=()
 source=('vconsole.conf' 'locale.conf')
+md5sums=('b7afc0530626cf3d1df77134a60ee2a3'
+         '6464042aea2f6d2a7ff71878291b5bbc')
 options=('!strip')
-md5sums=('SKIP' 'SKIP')
 _gitname='moot-base-config'
 
 package() {
