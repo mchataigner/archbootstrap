@@ -141,6 +141,8 @@ def build(flavors = list()):
         os.chdir("..")
     if "prog" in flavors:
         os.system("yaourt -Pi --noconfirm moot-prog")
+    if "server" in flavors:
+        os.system("yaourt -Pi --noconfirm moot-server")
     os.chdir("..")
 
 def setup_fstab():
