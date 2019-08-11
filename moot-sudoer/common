@@ -1,4 +1,4 @@
-Defaults editor=/usr/bin/emacs, !env_editor
+Defaults env_editor,editor=/usr/bin/emacs
 Defaults timestamp_timeout=20
 Defaults !tty_tickets
 
