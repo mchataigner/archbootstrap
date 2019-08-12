@@ -231,6 +231,10 @@ def setup_grub():
     else:
         subprocess.check_output(["grub-install", "--target=x86_64", install_disk])
 
+def setup_my_key():
+    subprocess.check_output(["pacman-key", "--recv-keys", "2B548C7D3205D9E0"])
+    subprocess.check_output(["pacman-key", "--lsign-key", "2B548C7D3205D9E0"])
+
 if __name__ == "__main__":
     optlist, flavors = getopt.getopt(sys.argv[1:], "igb")
     opts = dict(optlist)
@@ -250,6 +254,7 @@ if __name__ == "__main__":
         setup_fstab()
         setup_mkinitcpio()
         setup_grub()
+    setup_my_key()
     create_base_user("m.chataigner", sgroups = ["sudo", "wheel"], passwd = True)
     create_base_user("admin")
     setup_sudoers()
