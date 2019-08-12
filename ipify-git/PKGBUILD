@@ -1,0 +1,50 @@
+# Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
+
+pkgname=ipify-api-git
+pkgver=1.0.r0.gff0bbfa
+pkgrel=1
+pkgdesc="http service written in go to echo requester IP"
+arch=('x86_64')
+url="https://www.ipify.org/"
+source=('git+https://github.com/mchataigner/ipify-api'
+		'ipify.service')
+md5sums=('SKIP'
+         '23e96237ac04e7188101a94b414e8920')
+license=('GPL')
+makedepends=('git' 'go')
+provides=('ipify-api')
+_go_module=github.com/rdegges/ipify-api
+_gitname=ipify-api
+
+prepare(){
+  export GOPATH="$srcdir"/GO
+  mkdir -p "$srcdir"/GO/src/$_go_module
+  rm -rf "$srcdir"/GO/src/$_go_module
+  ln -rTsf $_gitname "$srcdir"/GO/src/$_go_module
+
+  # the dependencies can be fetched here if needed
+  cd "$srcdir"/GO/src/$_go_module
+  git clean -fxd
+  godep get
+}
+
+pkgver () {
+  cd $_gitname
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+  export GOPATH="$srcdir"/GO
+
+  cd "$srcdir"/GO/src/$_go_module
+  go build
+}
+
+package() {
+  cd "$srcdir"/GO/src/$_go_module
+  mkdir -p $pkgdir/usr/bin
+  install -Dm755 ipify-api $pkgdir/usr/bin/ipify-api
+  mkdir -p $pkgdir/usr/lib/systemd/system
+  install -Dm644 $srcdir/ipify.service $pkgdir/usr/lib/systemd/system/ipify.service
+}

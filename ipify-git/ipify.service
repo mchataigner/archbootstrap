@@ -1,0 +1,12 @@
+[Unit]
+Description=Ipify
+
+[Service]
+Type=simple
+SyslogLevel=err
+ExecStart=/usr/bin/ipify-api
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
