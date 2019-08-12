@@ -8,9 +8,7 @@ url="https://github.com/mchataigner/archbootstrat/"
 arch=('any')
 license=('MIT')
 makedepends=('coreutils')
-depends=('moot-base')
 backup=("etc/vconsole.conf" "etc/locale.conf")
-makedepends=()
 source=('emacs.service' 'locale.conf' 'vconsole.conf')
 md5sums=('af0c12d31cfa06e48a483420826160c9'
          '6464042aea2f6d2a7ff71878291b5bbc'
@@ -19,6 +17,7 @@ options=('!strip')
 _gitname='moot-base-config'
 
 package() {
+  depends+=('moot-base')
   mkdir -p $pkgdir/etc
   chmod 755 $pkgdir/etc
   install -Dm644 vconsole.conf $pkgdir/etc/vconsole.conf

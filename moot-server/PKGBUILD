@@ -7,11 +7,13 @@ pkgdesc="Dummy package to handle all common my dependencies."
 url="https://github.com/mchataigner/archbootstrat/"
 arch=('any')
 license=('MIT')
-depends=(
-  'moot-base'
-  'bind-tools'
-  'ovpngen'
-  'postfix'
-)
 options=('!strip')
 _gitname='moot-server'
+
+package() {
+  depends+=(
+	'moot-base'
+	'bind-tools'
+	'postfix'
+  )
+}

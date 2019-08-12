@@ -7,14 +7,13 @@ pkgdesc="Dummy package to handle all common my dependencies."
 url="https://github.com/mchataigner/archbootstrat/"
 arch=('any')
 license=('MIT')
-depends=('moot-client')
-makedepends=()
 source=('10-keyboard-layout.conf')
 md5sums=('f7054bbb5f407a5beed4de8608b7de89')
 options=('!strip')
 _gitname='moot-client-config'
 
 package() {
-	mkdir -p $pkgdir/etc/X11/xorg.conf.d
-	cp 10-keyboard-layout.conf $pkgdir/etc/X11/xorg.conf.d/
+  depends+=('moot-client')
+  mkdir -p $pkgdir/etc/X11/xorg.conf.d
+  cp 10-keyboard-layout.conf $pkgdir/etc/X11/xorg.conf.d/
 }
