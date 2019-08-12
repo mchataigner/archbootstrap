@@ -49,6 +49,7 @@ depends=(
   'lldb'
   'maven'
   'mercurial'
+  'namcap'
   'openjdk-doc'
   'openjdk-src'
   'openjdk8-doc'
