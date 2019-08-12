@@ -1,3 +1,36 @@
 [submodule "package-query-git"]
 	path = package-query-git
 	url = https://aur.archlinux.org/package-query-git.git
+[submodule "ammonite"]
+	path = ammonite
+	url = https://aur.archlinux.org/ammonite.git
+[submodule "byobu"]
+	path = byobu
+	url = https://aur.archlinux.org/byobu.git
+[submodule "chromium-widevine"]
+	path = chromium-widevine
+	url = https://aur.archlinux.org/chromium-widevine.git
+[submodule "downgrade"]
+	path = downgrade
+	url = https://aur.archlinux.org/downgrade.git
+[submodule "icdiff"]
+	path = icdiff
+	url = https://aur.archlinux.org/icdiff.git
+[submodule "leiningen"]
+	path = leiningen
+	url = https://aur.archlinux.org/leiningen.git
+[submodule "peco"]
+	path = peco
+	url = https://aur.archlinux.org/peco.git
+[submodule "quicksynergy"]
+	path = quicksynergy
+	url = https://aur.archlinux.org/quicksynergy.git
+[submodule "rust-book-git"]
+	path = rust-book-git
+	url = https://aur.archlinux.org/rust-book-git.git
+[submodule "spotify"]
+	path = spotify
+	url = https://aur.archlinux.org/spotify.git
+[submodule "wakeonlan"]
+	path = wakeonlan
+	url = https://aur.archlinux.org/wakeonlan.git
