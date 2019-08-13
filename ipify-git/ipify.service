@@ -6,7 +6,7 @@ Type=simple
 SyslogLevel=err
 ExecStart=/usr/bin/ipify-api
 Restart=always
-User=root
+DynamicUser=yes
 
 [Install]
 WantedBy=multi-user.target
