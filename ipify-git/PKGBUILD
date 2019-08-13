@@ -2,7 +2,7 @@
 
 pkgname=ipify-api-git
 pkgver=1.0.r0.gff0bbfa
-pkgrel=1
+pkgrel=2
 pkgdesc="http service written in go to echo requester IP"
 arch=('x86_64')
 url="https://www.ipify.org/"
