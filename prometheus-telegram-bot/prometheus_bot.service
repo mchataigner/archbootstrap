@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus Telegram bot
+
+[Service]
+Type=simple
+SyslogLevel=err
+ExecStart=/usr/bin/prometheus_bot -c /etc/prometheus_bot/config.yaml -l "localhost:9087"
+Restart=always
+DynamicUser=yes
+
+[Install]
+WantedBy=multi-user.target

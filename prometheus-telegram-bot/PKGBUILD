@@ -1,0 +1,56 @@
+# Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
+pkgname=prometheus-telegram-bot
+pkgver=r87.e0f5fb2
+pkgrel=3
+pkgdesc="bot for interacting with telegram from alertmanager"
+arch=('x86_64')
+url="https://github.com/inCaller/prometheus_bot"
+license=('MIT')
+makedepends=('go' 'git')
+provides=('prometheus-telegram-bot')
+source=('git+https://github.com/inCaller/prometheus_bot'
+		'prometheus_bot.service')
+md5sums=('SKIP'
+         'c62e27d0ecd556d5aee10c687f38ea76')
+_go_module=github.com/inCaller/prometheus_bot
+_gitname=prometheus_bot
+
+prepare(){
+  export GOPATH="$srcdir"/GO
+  mkdir -p "$srcdir"/GO/
+  cd "$srcdir/$_gitname"
+  go get -d -v
+}
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+  export GOOS="linux"
+
+  case "$CARCH" in
+        "x86_64")
+          export GOARCH="amd64"
+          ;;
+        "aarch64")
+          export GOARCH="arm64"
+          ;;
+  esac
+
+  export GOPATH="$srcdir"/GO
+
+  cd "$srcdir"/$_gitname
+  make clean
+  make
+}
+
+package() {
+  cd "$srcdir"/$_gitname
+  mkdir -p $pkgdir/usr/bin
+  install -Dm755 prometheus_bot $pkgdir/usr/bin/prometheus_bot
+  mkdir -p $pkgdir/usr/lib/systemd/system
+  install -Dm644 $srcdir/prometheus_bot.service $pkgdir/usr/lib/systemd/system/prometheus_bot.service
+}
