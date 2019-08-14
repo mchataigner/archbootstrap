@@ -40,3 +40,6 @@
 [submodule "python-ovh"]
 	path = python-ovh
 	url = https://aur.archlinux.org/python-ovh.git
+[submodule "paperkey"]
+	path = paperkey
+	url = https://aur.archlinux.org/paperkey.git
