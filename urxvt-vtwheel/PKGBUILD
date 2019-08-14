@@ -1,0 +1,20 @@
+# previous Maintainer: PyroPeter <abi1789 @ googlemail . com>
+# previous Maintainer: Alcasa <alcasa . mz @ googlemail . com>
+# Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
+
+pkgname=urxvt-vtwheel
+pkgver=0.3
+pkgrel=2
+pkgdesc="Scroll wheel support for urxvt"
+url="http://aur.archlinux.org/"
+arch=('any')
+license=('unknown')
+depends=('bash' 'rxvt-unicode')
+source=('vtwheel')
+md5sums=('872b1433376ed1e4b0ac07f221adaa43')
+
+package() {
+  install -Dm0664 "$srcdir/vtwheel" "$pkgdir/usr/lib/urxvt/perl/vtwheel"
+}
+
+# vim:set ts=2 sw=2 et:
