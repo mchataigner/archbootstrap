@@ -2,10 +2,10 @@
 
 pkgname=(pasystray)
 _pkgname=pasystray
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="PulseAudio system tray (a replacement for padevchooser)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/christophgysin/pasystray"
 license=('LGPL')
 groups=('multimedia')
@@ -30,7 +30,7 @@ optdepends=(
   'paprefs: Launch PulseAudio preferences from tray icon'
 )
 source=($_pkgname-$pkgver.tar.gz::https://github.com/christophgysin/$_pkgname/archive/$pkgver.tar.gz)
-md5sums=('c7467ac2b75290bd086fc60f8243ad77')
+md5sums=('0b8fd064551218f95f2cb535fea37d2b')
 
 
 build() {

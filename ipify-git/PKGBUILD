@@ -4,12 +4,16 @@ pkgname=ipify-api-git
 pkgver=1.0.r0.gff0bbfa
 pkgrel=2
 pkgdesc="http service written in go to echo requester IP"
-arch=('x86_64')
+arch=(
+  'x86_64'
+  'aarch64'
+)
 url="https://www.ipify.org/"
 source=('git+https://github.com/mchataigner/ipify-api'
 		'ipify.service')
 md5sums=('SKIP'
          '1c26dd342969909f0ed9c5502c1dcc07')
+
 license=('GPL')
 makedepends=('git' 'go')
 provides=('ipify-api')
@@ -35,6 +39,17 @@ pkgver () {
 
 build() {
   export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+  export GOOS="linux"
+
+  case "$CARCH" in
+	"x86_64")
+	  export GOARCH="amd64"
+	  ;;
+	"aarch64")
+	  export GOARCH="arm64"
+	  ;;
+  esac
+
   export GOPATH="$srcdir"/GO
 
   cd "$srcdir"/GO/src/$_go_module

@@ -30,6 +30,7 @@ package() {
     'gedit'
     'geeqie'
     'ghc'
+    'glide'
     'go'
     'godep'
     'gradle'
