@@ -22,9 +22,6 @@
 [submodule "quicksynergy"]
 	path = quicksynergy
 	url = https://aur.archlinux.org/quicksynergy.git
-[submodule "rust-book-git"]
-	path = rust-book-git
-	url = https://aur.archlinux.org/rust-book-git.git
 [submodule "spotify"]
 	path = spotify
 	url = https://aur.archlinux.org/spotify.git
