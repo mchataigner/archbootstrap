@@ -37,3 +37,6 @@
 [submodule "paperkey"]
 	path = paperkey
 	url = https://aur.archlinux.org/paperkey.git
+[submodule "pasystray-gtk3-git"]
+	path = pasystray-gtk3-git
+	url = https://aur.archlinux.org/pasystray-gtk3-git.git
