@@ -1,6 +1,3 @@
-[submodule "package-query-git"]
-	path = package-query-git
-	url = https://aur.archlinux.org/package-query-git.git
 [submodule "ammonite"]
 	path = ammonite
 	url = https://aur.archlinux.org/ammonite.git
