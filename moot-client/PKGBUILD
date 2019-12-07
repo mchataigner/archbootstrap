@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
+pkgver=2
 pkgrel=1
-pkgver=1
 pkgname=moot-client
 pkgdesc="Dummy package to handle all common my dependencies."
 url="https://github.com/mchataigner/archbootstrat/"
@@ -54,7 +54,6 @@ package() {
     'paramano'
     'pavucontrol'
     'pepper-flash'
-    'pidgin-sipe'
     'pulseaudio-bluetooth'
     'quicksynergy'
     'rawtherapee'
@@ -63,7 +62,6 @@ package() {
     'seahorse'
     'shotwell'
     'spotify'
-    'sublime-text-dev'
     'synology-note-station'
     'system-config-printer'
     'thunderbird'
