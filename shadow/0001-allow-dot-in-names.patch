@@ -1,0 +1,24 @@
+From 57811ff3cccda29e0299da0913d9529263d8508a Mon Sep 17 00:00:00 2001
+From: Mathieu Bressolle-Chataigner <mathieu.chataigner@gmail.com>
+Date: Sun, 28 Jun 2020 19:10:25 +0200
+Subject: [PATCH] allow dot in names
+
+---
+ libmisc/chkname.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libmisc/chkname.c b/libmisc/chkname.c
+index bdd1e72a..90f185c4 100644
+--- a/libmisc/chkname.c
++++ b/libmisc/chkname.c
+@@ -68,6 +68,7 @@ static bool is_valid_name (const char *name)
+ 		      ( ('0' <= *name) && ('9' >= *name) ) ||
+ 		      ('_' == *name) ||
+ 		      ('-' == *name) ||
++		      ('.' == *name) ||
+ 		      ( ('$' == *name) && ('\0' == *(name + 1)) )
+ 		     )) {
+ 			return false;
+-- 
+2.27.0
+
