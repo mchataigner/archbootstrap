@@ -1,9 +1,3 @@
-[submodule "ammonite"]
-	path = ammonite
-	url = https://aur.archlinux.org/ammonite.git
-[submodule "byobu"]
-	path = byobu
-	url = https://aur.archlinux.org/byobu.git
 [submodule "chromium-widevine"]
 	path = chromium-widevine
 	url = https://aur.archlinux.org/chromium-widevine.git
@@ -13,9 +7,6 @@
 [submodule "icdiff"]
 	path = icdiff
 	url = https://aur.archlinux.org/icdiff.git
-[submodule "leiningen"]
-	path = leiningen
-	url = https://aur.archlinux.org/leiningen.git
 [submodule "peco"]
 	path = peco
 	url = https://aur.archlinux.org/peco.git
@@ -34,9 +25,6 @@
 [submodule "python-ovh"]
 	path = python-ovh
 	url = https://aur.archlinux.org/python-ovh.git
-[submodule "paperkey"]
-	path = paperkey
-	url = https://aur.archlinux.org/paperkey.git
 [submodule "pasystray-gtk3-git"]
 	path = pasystray-gtk3-git
 	url = https://aur.archlinux.org/pasystray-gtk3-git.git
