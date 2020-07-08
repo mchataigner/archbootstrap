@@ -1,0 +1,23 @@
+# Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
+
+pkgname=starship
+pkgver=0.44.0
+pkgrel=1
+pkgdesc='cross-shell prompt'
+arch=('i686' 'x86_64')
+url="https://github.com/starship/starship"
+license=('MIT')
+conflicts=()
+makedepends=('rust' 'cargo' 'git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('b002fa0e2b34ad59330a543461a51648751db4ae8d439d58065a3b9656772fe3')
+
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release
+}
+
+package() {
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+}
