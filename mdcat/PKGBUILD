@@ -1,0 +1,23 @@
+# Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
+
+pkgname=mdcat
+pkgver=0.20.0
+pkgrel=1
+pkgdesc='cat with markdown renderer'
+arch=('i686' 'x86_64')
+url="https://github.com/lunaryorn/mdcat"
+license=('MPL')
+conflicts=()
+makedepends=('rust' 'cargo' 'git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
+sha256sums=('c62e3fbe7461410b72b3fd27dcaa543aa0bec99cbfd78c87aa8fe441972e79ff')
+
+build() {
+  cd "$pkgname-$pkgname-$pkgver"
+  cargo build --release
+}
+
+package() {
+  install -Dm755 "$srcdir/$pkgname-$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname-$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+}
