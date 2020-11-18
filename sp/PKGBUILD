@@ -1,0 +1,14 @@
+# Maintainer: yurisuki <yurisuki@waifu.club>
+pkgname=sp
+pkgver=1
+pkgrel=0
+pkgdesc="sp, the command-line Spotify controller."
+arch=('any')
+url='https://gist.github.com/streetturtle/fa6258f3ff7b17747ee3'
+depends=('spotify' 'dbus')
+source=("sp::https://gist.githubusercontent.com/streetturtle/fa6258f3ff7b17747ee3/raw/e52c3ed7086461a4e218e3121949e4515c5ccc78/sp")
+sha512sums=('9a0ef911d56c08a86de0f8dbae3770c98b0a4f266af2fc965aaf354ad0d47accecc6d8f6925309052fc3c789c2fb59b76376c6539c2f07d03c6520a7f788654a')
+
+package() {
+  install -Dm 755 "$srcdir/sp" "$pkgdir/usr/bin/sp"
+}
