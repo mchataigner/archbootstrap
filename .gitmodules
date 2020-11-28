@@ -40,3 +40,36 @@
 [submodule "mkinitcpio-systemd-tool"]
 	path = mkinitcpio-systemd-tool
 	url = https://aur.archlinux.org/mkinitcpio-systemd-tool.git
+[submodule "alacritty-ligatures-git"]
+	path = alacritty-ligatures-git
+	url = https://aur.archlinux.org/alacritty-ligatures-git.git
+[submodule "btrfs-du"]
+	path = btrfs-du
+	url = https://aur.archlinux.org/btrfs-du.git
+[submodule "git-brunch"]
+	path = git-brunch
+	url = https://aur.archlinux.org/git-brunch
+[submodule "nvm"]
+	path = nvm
+	url = https://aur.archlinux.org/nvm
+[submodule "postman-bin"]
+	path = postman-bin
+	url = https://aur.archlinux.org/postman-bin
+[submodule "ruby-build"]
+	path = ruby-build
+	url = https://aur.archlinux.org/ruby-build
+[submodule "slack-electron"]
+	path = slack-electron
+	url = https://aur.archlinux.org/slack-electron
+[submodule "ttf-twemoji-color"]
+	path = ttf-twemoji-color
+	url = https://aur.archlinux.org/ttf-twemoji-color
+[submodule "urxvt-resize-font-git"]
+	path = urxvt-resize-font-git
+	url = https://aur.archlinux.org/urxvt-resize-font-git
+[submodule "urxvtcd"]
+	path = urxvtcd
+	url = https://aur.archlinux.org/urxvtcd
+[submodule "zoom"]
+	path = zoom
+	url = https://aur.archlinux.org/zoom
