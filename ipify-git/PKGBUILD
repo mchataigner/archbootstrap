@@ -2,11 +2,10 @@
 
 pkgname=ipify-api-git
 pkgver=1.0.r0.gff0bbfa
-pkgrel=2
+pkgrel=3
 pkgdesc="http service written in go to echo requester IP"
 arch=(
   'x86_64'
-  'aarch64'
 )
 url="https://www.ipify.org/"
 source=('git+https://github.com/mchataigner/ipify-api'
@@ -15,7 +14,7 @@ md5sums=('SKIP'
          '1c26dd342969909f0ed9c5502c1dcc07')
 
 license=('GPL')
-makedepends=('git' 'go' 'godep')
+makedepends=('git' 'go')
 provides=('ipify-api')
 _go_module=github.com/rdegges/ipify-api
 _gitname=ipify-api
@@ -29,7 +28,6 @@ prepare(){
   # the dependencies can be fetched here if needed
   cd "$srcdir"/GO/src/$_go_module
   git clean -fxd
-  godep get
 }
 
 pkgver () {

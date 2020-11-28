@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
 pkgrel=1
-pkgver=r1862.e9f281cd
+pkgver=r1891.0a405494
 pkgname=prezto-moot
 pkgdesc="Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes."
 url="https://github.com/mchataigner/prezto/"
@@ -28,7 +28,8 @@ pkgver() {
 build() {
   cd $srcdir/$_gitname
   git submodule update --init --recursive
-  git submodule foreach git pull origin master
+  git submodule foreach git fetch
+  git submodule foreach git reset origin/master
 
   mkdir -p $srcdir/etc/zsh
   

@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
-pkgrel=2
+pkgrel=3
 pkgver=1
 pkgname=moot-sudoer
 pkgdesc="Dummy package to handle all common my dependencies."
@@ -10,9 +10,8 @@ license=('MIT')
 depends=('sudo')
 backup=("etc/sudoers.d/common" "etc/sudoers.d/admin")
 makedepends=()
-source=('common' 'admin_sudoers' 'install')
-md5sums=('1b0864e65d9dce27a618debb8316a21d'
-         '96af035689e3656339723c6a0e798e44'
+source=('common' 'install')
+md5sums=('7529f09d95b33723d61686e020c12703'
          '100ce1aaaf96c21913d7ec3a5fdc43f6')
 options=('!strip')
 install='install'
@@ -21,7 +20,6 @@ _gitname='moot-base'
 package() {
     mkdir -p $pkgdir/etc/sudoers.d
     chmod 750 $pkgdir/etc/sudoers.d
-    install -m640 admin_sudoers $pkgdir/etc/sudoers.d/admin
     install -m640 common $pkgdir/etc/sudoers.d/common
 }
 

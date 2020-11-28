@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 pkgname=prometheus-telegram-bot
-pkgver=r87.e0f5fb2
-pkgrel=3
+pkgver=r100.aa39aa5
+pkgrel=1
 pkgdesc="bot for interacting with telegram from alertmanager"
 arch=('x86_64')
 url="https://github.com/inCaller/prometheus_bot"

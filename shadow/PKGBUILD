@@ -3,21 +3,22 @@
 
 pkgname=shadow
 pkgver=4.8.1
-pkgrel=1
+pkgrel=4
 pkgdesc="Password and account management tool suite with support for shadow files and PAM"
 arch=('x86_64')
 url='https://github.com/shadow-maint/shadow'
 license=('BSD')
-depends=('pam' 'acl' 'audit' 'libaudit.so')
-makedepends=('git' 'itstool' 'libxslt' 'docbook-xsl')
+depends=('pam' 'acl' 'libacl.so' 'audit' 'libaudit.so' 'libcap-ng' 'libcap-ng.so'
+         'libxcrypt' 'libcrypt.so')
 backup=(etc/login.defs
         etc/pam.d/{chage,passwd,shadow,useradd,usermod,userdel}
         etc/pam.d/{chpasswd,newusers,groupadd,groupdel,groupmod}
         etc/pam.d/{chgpasswd,groupmems}
         etc/default/useradd)
 options=(strip debug)
-validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')  # Christian Perrier
-source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
+validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8'   # Christian Perrier
+              'F1D08DB778185BF784002DFFE9FEEA06A85E3F9D')  # Serge Hallyn
+source=("https://github.com/shadow-maint/shadow/releases/download/$pkgver/shadow-$pkgver.tar.xz"{,.asc}
         LICENSE
         chgpasswd
         chpasswd
@@ -30,7 +31,8 @@ source=("git+https://github.com/shadow-maint/shadow.git#tag=$pkgver"
         0001-allow-dot-in-names.patch
        )
 install=shadow.install
-sha1sums=('SKIP'
+sha1sums=('63457a0ba58dc4e81b2663b839dc6c89d3343f12'
+          'SKIP'
           '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
           '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
           '12427b1ca92a9b85ca8202239f0d9f50198b818f'
@@ -43,29 +45,16 @@ sha1sums=('SKIP'
           'c173208c5cf34528602f9931468a67b7f68abad3'
           '2fe857056c310f0d9a55c26e3e9d7fff87d01a50')
 
-pkgver() {
-  cd "$pkgname"
-
-  git describe
-}
-
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
-  local backports=(
-  )
-
-  for commit in "${backports[@]}"; do
-    git cherry-pick -n "$commit"
-  done
-
-  git apply ../0001-allow-dot-in-names.patch
+  patch -p1 <../0001-allow-dot-in-names.patch
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
-  autoreconf -fisv
+  autoreconf -fsiv
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -73,18 +62,17 @@ build() {
     --libdir=/usr/lib \
     --mandir=/usr/share/man \
     --sysconfdir=/etc \
-    --enable-man \
     --disable-account-tools-setuid \
     --with-libpam \
     --with-group-name-max-length=32 \
     --with-audit \
     --without-selinux
 
-  make
+  make -j 8
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
@@ -112,7 +100,7 @@ package() {
 
   # we use the 'useradd' PAM file for other similar utilities
   for file in chage groupadd groupdel groupmod shadow \
-      useradd usermod userdel; do
+                    useradd usermod userdel; do
     install -Dm644 "$srcdir/defaults.pam" "$pkgdir/etc/pam.d/$file"
   done
 
@@ -121,27 +109,27 @@ package() {
 
   # Remove utilities provided by util-linux
   rm \
-      "$pkgdir"/usr/bin/{login,su,chsh,chfn,sg,nologin} \
-      "$pkgdir"/usr/sbin/{vipw,vigr}
+    "$pkgdir"/usr/bin/{login,su,chsh,chfn,sg,nologin} \
+    "$pkgdir"/usr/sbin/{vipw,vigr}
 
   # but we keep newgrp, as sg is really an alias to it
   mv "$pkgdir"/usr/bin/{newgrp,sg}
 
   # ...and their many man pages
   find "$pkgdir"/usr/share/man \
-      '(' -name 'chsh.1'    -o \
-          -name 'chfn.1'    -o \
-          -name 'su.1'      -o \
-          -name 'logoutd.8' -o \
-          -name 'login.1'   -o \
-          -name 'nologin.8' -o \
-          -name 'vipw.8'    -o \
-          -name 'vigr.8'    -o \
-          -name 'newgrp.1' ')' \
-      -delete
+       '(' -name 'chsh.1'    -o \
+       -name 'chfn.1'    -o \
+       -name 'su.1'      -o \
+       -name 'logoutd.8' -o \
+       -name 'login.1'   -o \
+       -name 'nologin.8' -o \
+       -name 'vipw.8'    -o \
+       -name 'vigr.8'    -o \
+       -name 'newgrp.1' ')' \
+       -delete
   rmdir \
-      "$pkgdir"/usr/share/man/{fi,id,zh_TW}/man1 \
-      "$pkgdir"/usr/share/man/{fi,ko/man8}
+    "$pkgdir"/usr/share/man/{fi,id,zh_TW}/man1 \
+    "$pkgdir"/usr/share/man/{fi,ko/man8}
 
   # move everything else to /usr/bin, because this isn't handled by ./configure
   mv "$pkgdir"/usr/sbin/* "$pkgdir"/usr/bin

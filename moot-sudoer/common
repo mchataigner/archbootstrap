@@ -8,11 +8,28 @@ Cmnd_Alias  STORAGE     =   /usr/bin/mount -o nosuid\,nodev\,noexec, /usr/bin/um
 Cmnd_Alias  SYSTEMD     =   /usr/bin/journalctl, /usr/bin/systemctl
 Cmnd_Alias  KILL        =   /usr/bin/kill, /usr/bin/killall
 Cmnd_Alias  PKGMAN      =   /usr/bin/pacman
-Cmnd_Alias  YAOURT      =   /usr/bin/yaourt
+Cmnd_Alias  YAY         =   /usr/bin/yay
 Cmnd_Alias  NETWORK     =   /usr/bin/netctl
 Cmnd_Alias  FIREWALL    =   /usr/bin/iptables, /usr/bin/ip6tables
 Cmnd_Alias  SHELL       =   /usr/bin/zsh, /usr/bin/bash
+Cmnd_Alias	PKGS		=	/usr/bin/mkarchroot, /usr/bin/makepkg, /usr/bin/arch-nspawn, /usr/bin/makechrootpkg
+
 %power      ALL         =   (root)  NOPASSWD: POWER
 %network    ALL         =   (root)  NOPASSWD: NETWORK
 %storage    ALL         =   (root)  NOPASSWD: STORAGE
+%packager   ALL         =   (ALL)   NOPASSWD:SETENV: PKGS
+
 root        ALL         =   (ALL)   ALL
+
+admin       ALL         =   (root)  NOPASSWD: SHELL
+admin       ALL         =   (root)  SYSTEMD,  KILL, FIREWALL
+admin       ALL         =   (root)  NOPASSWD: PKGMAN
+%admin      ALL         =   (admin) NOPASSWD: SHELL
+
+devel       ALL         =   (root)  NOPASSWD: PKGMAN
+%devel      ALL         =   (devel) NOPASSWD: SHELL
+
+wheel       ALL         =   (admin) NOPASSWD: SHELL
+%sudo       ALL         =   (admin) NOPASSWD: SHELL
+%sudo       ALL         =   (admin) NOPASSWD: YAY
+%wheel      ALL         =   (devel) NOPASSWD: SHELL
