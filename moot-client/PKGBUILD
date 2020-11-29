@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgname=moot-client
 pkgdesc="Dummy package to handle all common my dependencies."
@@ -46,7 +46,6 @@ package() {
     'networkmanager-openconnect'
     'networkmanager-openvpn'
     'networkmanager-vpnc'
-    'otf-fira-code'
     'otf-font-awesome'
     'oxygen-gtk2'
     'oxygen-icons'

@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
-pkgrel=1
+pkgrel=2
 pkgver=1
 pkgname=moot-prog
 pkgdesc="Dummy package to handle all common my dependencies."
@@ -30,9 +30,7 @@ package() {
     'gedit'
     'geeqie'
     'ghc'
-    'glide'
     'go'
-    'godep'
     'gradle'
     'groovy'
     'gvfs-mtp'
