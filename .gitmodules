@@ -25,9 +25,6 @@
 [submodule "python-ovh"]
 	path = python-ovh
 	url = https://aur.archlinux.org/python-ovh.git
-[submodule "pasystray-gtk3-git"]
-	path = pasystray-gtk3-git
-	url = https://aur.archlinux.org/pasystray-gtk3-git.git
 [submodule "autojump"]
 	path = autojump
 	url = https://aur.archlinux.org/autojump.git
