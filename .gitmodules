@@ -73,3 +73,21 @@
 [submodule "zoom"]
 	path = zoom
 	url = https://aur.archlinux.org/zoom
+[submodule "apg"]
+	path = apg
+	url = https://aur.archlinux.org/apg
+[submodule "elm-platform-bin"]
+	path = elm-platform-bin
+	url = https://aur.archlinux.org/elm-platform-bin
+[submodule "espanso-bin"]
+	path = espanso-bin
+	url = https://aur.archlinux.org/espanso-bin
+[submodule "exercism-bin"]
+	path = exercism-bin
+	url = https://aur.archlinux.org/exercism-bin
+[submodule "ttf-symbola"]
+	path = ttf-symbola
+	url = https://aur.archlinux.org/ttf-symbola
+[submodule "virtualbox-ext-oracle"]
+	path = virtualbox-ext-oracle
+	url = https://aur.archlinux.org/virtualbox-ext-oracle
