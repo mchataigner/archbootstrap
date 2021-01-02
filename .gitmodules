@@ -97,3 +97,6 @@
 [submodule "speedometer"]
 	path = speedometer
 	url = https://aur.archlinux.org/speedometer
+[submodule "authelia"]
+	path = authelia
+	url = https://aur.archlinux.org/authelia
