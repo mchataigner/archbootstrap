@@ -100,3 +100,6 @@
 [submodule "authelia"]
 	path = authelia
 	url = https://aur.archlinux.org/authelia
+[submodule "dlib"]
+	path = dlib
+	url = https://aur.archlinux.org/dlib
