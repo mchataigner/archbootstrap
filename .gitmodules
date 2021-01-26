@@ -103,3 +103,6 @@
 [submodule "dlib"]
 	path = dlib
 	url = https://aur.archlinux.org/dlib
+[submodule "paru"]
+	path = paru
+	url = https://aur.archlinux.org/paru
