@@ -1,21 +1,22 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
 pkgrel=1
-pkgver=r1891.0a405494
+pkgver=r1895.704fc46c
 pkgname=prezto-moot
 pkgdesc="Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes."
 url="https://github.com/mchataigner/prezto/"
 arch=('any')
 license=('MIT')
-depends=('zsh>=4.3.17')
+depends=('zsh>=4.3.17', 'perl')
 makedepends=('git' 'coreutils' 'sed')
-source=('git://github.com/sorin-ionescu/prezto.git' 'install')
+source=('git://github.com/sorin-ionescu/prezto.git' 'install' 'prompt_moot_setup')
 options=('!strip')
 provides=('prezto')
 conflicts=('prezto-git' 'grml-zsh-config')
 install='install'
 md5sums=('SKIP'
-         '55b6cb40de22eabd8e44caa987ae3340')
+         '55b6cb40de22eabd8e44caa987ae3340'
+		 '66849abf2c9b110e280097d8040e062a')
 _gitname='prezto'
 
 backup=('etc/zsh/zlogin' 'etc/zsh/zlogout' 'etc/zsh/zprestorc' 'etc/zsh/zshenv' 'etc/zsh/zshrc')
@@ -29,7 +30,7 @@ build() {
   cd $srcdir/$_gitname
   git submodule update --init --recursive
   git submodule foreach git fetch
-  git submodule foreach git reset origin/master
+  git submodule foreach git reset origin/HEAD
 
   mkdir -p $srcdir/etc/zsh
   
@@ -57,7 +58,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 zstyle ':prezto:module:editor:info:keymap:primary' format '>>>'
 
-zstyle ':prezto:module:prompt' theme 'skwp'
+zstyle ':prezto:module:prompt' theme 'moot'
 
 zstyle ':prezto:load' pmodule \
   'archive' \
@@ -97,4 +98,7 @@ package() {
   
   mkdir -p $pkgdir/etc
   cp -r $srcdir/etc/zsh $pkgdir/etc
+
+  mkdir -p $pkgdir/usr/lib/prezto/modules/prompt/functions
+  cp $srcdir/prompt_moot_setup $pkgdir/usr/lib/prezto/modules/prompt/functions/
 }
