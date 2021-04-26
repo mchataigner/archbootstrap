@@ -19,9 +19,6 @@
 [submodule "wakeonlan"]
 	path = wakeonlan
 	url = https://aur.archlinux.org/wakeonlan.git
-[submodule "yay"]
-	path = yay
-	url = https://aur.archlinux.org/yay.git
 [submodule "python-ovh"]
 	path = python-ovh
 	url = https://aur.archlinux.org/python-ovh.git
