@@ -103,3 +103,6 @@
 [submodule "paru"]
 	path = paru
 	url = https://aur.archlinux.org/paru
+[submodule "google-chrome"]
+	path = google-chrome
+	url = https://aur.archlinux.org/google-chrome
