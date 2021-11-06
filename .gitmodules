@@ -31,9 +31,6 @@
 [submodule "jetbrains-toolbox"]
 	path = jetbrains-toolbox
 	url = https://aur.archlinux.org/jetbrains-toolbox.git
-[submodule "mkinitcpio-systemd-tool"]
-	path = mkinitcpio-systemd-tool
-	url = https://aur.archlinux.org/mkinitcpio-systemd-tool.git
 [submodule "alacritty-ligatures-git"]
 	path = alacritty-ligatures-git
 	url = https://aur.archlinux.org/alacritty-ligatures-git.git
