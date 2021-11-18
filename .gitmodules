@@ -103,3 +103,6 @@
 [submodule "google-chrome"]
 	path = google-chrome
 	url = https://aur.archlinux.org/google-chrome
+[submodule "awsvpnclient"]
+	path = awsvpnclient
+	url = https://aur.archlinux.org/awsvpnclient
