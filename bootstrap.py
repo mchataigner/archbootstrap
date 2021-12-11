@@ -48,12 +48,7 @@ def create_base_user(name, groups = list(), sgroups = list(), passwd = False):
     os.chown("/home/"+name,user.pw_uid,user.pw_gid)
 
 def install_required_packages():
-    os.system("pacman -S --noconfirm --needed base")
-    os.system("pacman -S --noconfirm --needed base-devel")
-    os.system("pacman -S --noconfirm --needed linux-tools")
-    os.system("pacman -S --noconfirm --needed git python curl")
-    os.system("pacman -S --noconfirm --needed grub efibootmgr")
-
+    os.system("pacman -S --noconfirm --needed base base-devel linux-tools git python curl grub efibootmgr")
 
 def fetch_sudoer(name, file_name):
     conn = http.client.HTTPSConnection("raw.githubusercontent.com")
@@ -88,62 +83,30 @@ def clean_repo():
     if os.path.isdir("archbootstrap"):
         shutil.rmtree("archbootstrap")
 
+def pacman_remove(pack):
+    if not os.system("pacman -Q " + pack):
+        os.system("pacman -R --noconfirm "+pack)
+
+def pacman_install(pack):
+    os.system("pacman -S --noconfirm "+pack)
+        
 def pre_build():
-    # remove wrong version of yaourt
-    if not os.system("pacman -Q yaourt"):
-        os.system("pacman -R --noconfirm yaourt")
-    if not os.system("pacman -Q yaourt-git"):
-        os.system("pacman -R --noconfirm yaourt-git")
-    # remove wrong version of package-query
-    if not os.system("pacman -Q package-query"):
-        os.system("pacman -R --noconfirm package-query")
-    # remove wrong version of prezto
-    if not os.system("pacman -Q prezto-git"):
-        os.system("pacman -R --noconfirm prezto-git")
-    # remove grml-zsh-config
-    if not os.system("pacman -Q grml-zsh-config"):
-        os.system("pacman -R --noconfirm grml-zsh-config")
+    for pack in ["yaourt", "yaourt-git", "package-query", "prezto-git", "grml-zsh-config"]:
+        pacman_remove(pack)
     os.system("sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen")
     os.system("locale-gen")
 
 def build(flavors = list()):
-    # install correct version of package-query if needed
-    if os.system("pacman -Q package-query-git") or RE_INSTALL:
-        os.chdir("package-query-git")
-        os.system("makepkg -si --noconfirm")
-        os.chdir("..")
-    # intall correct version of yaourt if needed
-    if os.system("pacman -Q yaourt-moot") or RE_INSTALL:
-        os.chdir("yaourt-moot")
-        os.system("makepkg -si --noconfirm")
-        os.chdir("..")
-    os.chdir("moot-sudoer")
-    os.system("makepkg -si --noconfirm")
-    os.chdir("..")
-    os.system("yaourt -Pi --noconfirm moot-base")
-    os.chdir("moot-base-config")
-    os.system("makepkg -si --noconfirm")
-    os.chdir("..")
-    os.system("sudo -i systemctl start sshd")
-    os.system("sudo -i systemctl enable sshd")
-    if os.system("pacman -Q prezto-moot") or RE_INSTALL:
-        os.chdir("prezto-moot")
-        os.system("makepkg -si --noconfirm")
-        os.chdir("..")
+    pacman_install("paru moot-sudoer moot-base moot-base-config prezto-moot")
+    os.system("systemctl start sshd")
+    os.system("systemctl enable sshd")
+
     if "client" in flavors:
-        os.system("pacman -S --noconfirm --needed xorg xorg-apps xorg-drivers xorg-fonts")
-        os.system("yaourt -Pi --noconfirm moot-client")
-        os.chdir("moot-client-config")
-        os.system("makepkg -si --noconfirm")
-        os.chdir("..")
-        os.chdir("pasystray-moot")
-        os.system("makepkg -si --noconfirm")
-        os.chdir("..")
+        pacman_install("xorg xorg-apps xorg-drivers xorg-fonts moot-client moot-client-config pasystray-moot")
     if "prog" in flavors:
-        os.system("yaourt -Pi --noconfirm moot-prog")
+        pacman_install("moot-prog")
     if "server" in flavors:
-        os.system("yaourt -Pi --noconfirm moot-server")
-    os.chdir("..")
+        pacman_install("moot-server")
 
 def setup_fstab():
     os.system("genfstab -U / > /etc/fstab")
@@ -259,15 +222,8 @@ if __name__ == "__main__":
     create_base_user("admin")
     setup_sudoers()
     setup_localtime()
-    admin = pwd.getpwnam("admin")
     os.system("chsh -s /usr/bin/zsh")
     os.system("chsh -s /usr/bin/zsh m.chataigner")
     os.system("chsh -s /usr/bin/zsh admin")
     pre_build()
-    os.setregid(admin.pw_gid, admin.pw_gid)
-    os.setreuid(admin.pw_uid, admin.pw_uid)
-    os.environ['HOME']="/home/admin"
-    os.chdir("/home/admin")
-    fetch_repo()
     build(flavors)
-    clean_repo()
