@@ -106,3 +106,6 @@
 [submodule "awsvpnclient"]
 	path = awsvpnclient
 	url = https://aur.archlinux.org/awsvpnclient
+[submodule "pacman-static"]
+	path = pacman-static
+	url = https://aur.archlinux.org/pacman-static
