@@ -109,3 +109,12 @@
 [submodule "pacman-static"]
 	path = pacman-static
 	url = https://aur.archlinux.org/pacman-static
+[submodule "aws-iam-authenticator-bin"]
+	path = aws-iam-authenticator-bin
+	url = https://aur.archlinux.org/aws-iam-authenticator-bin
+[submodule "aws-iam-authenticator-git"]
+	path = aws-iam-authenticator-git
+	url = https://aur.archlinux.org/aws-iam-authenticator-git
+[submodule "ruby-build-git"]
+	path = ruby-build-git
+	url = https://aur.archlinux.org/ruby-build-git
