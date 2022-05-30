@@ -118,3 +118,6 @@
 [submodule "ruby-build-git"]
 	path = ruby-build-git
 	url = https://aur.archlinux.org/ruby-build-git
+[submodule "noisetorch"]
+	path = noisetorch
+	url = https://aur.archlinux.org/noisetorch
