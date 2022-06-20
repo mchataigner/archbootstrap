@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
-pkgrel=2
+pkgrel=3
 pkgver=1
 pkgname=moot-base
 pkgdesc="Dummy package to handle all common my dependencies."
@@ -38,6 +38,7 @@ package() {
 #    'figlet'
     'fping'
     'fzf'
+	'git'
     'gnu-netcat'
     'gptfdisk'
     'grub'

@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgname=moot-client
 pkgdesc="Dummy package to handle all common my dependencies."
@@ -19,7 +19,6 @@ package() {
     'arandr'
     'awesome'
     'bluez'
-    'bluez-firmware'
     'bluez-utils'
     'chromium'
     'chromium-widevine'
@@ -36,7 +35,6 @@ package() {
     'i3lock'
     'jdk8-openjdk'
     'konsole'
-    'libu2f-host'
     'luit'
     'mate-icon-theme'
     'meld'
@@ -47,12 +45,9 @@ package() {
     'networkmanager-openvpn'
     'networkmanager-vpnc'
     'otf-font-awesome'
-    'oxygen-gtk2'
     'oxygen-icons'
     'oxygen-icons-svg'
-    'paramano'
     'pavucontrol'
-    'pepper-flash'
     'pulseaudio-bluetooth'
     'quicksynergy'
     'rawtherapee'
@@ -78,7 +73,6 @@ package() {
     'vlc'
     'xautolock'
     'xbindkeys'
-    'xboxdrv'
     'xclip'
     'xdotool'
     'xorg-bdftopcf'

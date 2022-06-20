@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
-pkgrel=2
+pkgrel=3
 pkgver=1
 pkgname=moot-prog
 pkgdesc="Dummy package to handle all common my dependencies."
@@ -15,7 +15,6 @@ package() {
     'moot-base'
     'android-udev'
     'ant'
-    'atom'
     'calibre'
     'clang'
     'cmake'
@@ -37,15 +36,12 @@ package() {
     'httpie'
     'inotify-tools'
     'ipmitool'
-    'ipython2'
-    'ipython2-notebook'
     'ivy'
     'jdk-openjdk'
     'jdk8-openjdk'
     'jetbrains-toolbox'
     'jre-openjdk'
     'jre-openjdk-headless'
-    'jupyter'
     'jupyter-notebook'
     'leiningen'
     'lldb'
@@ -63,13 +59,8 @@ package() {
     'python-setuptools'
     'python-virtualenv'
     'python-virtualenvwrapper'
-    'python2-pip'
-    'python2-setuptools'
-    'python2-virtualenv'
     'rpmextract'
     'ruby'
-    'rust-book-git'
-    'rust-docs'
     'rust-racer'
     'rustup'
     'samba'
