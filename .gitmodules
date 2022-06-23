@@ -136,3 +136,9 @@
 [submodule "notion-app-enhanced"]
 	path = notion-app-enhanced
 	url = https://aur.archlinux.org/notion-app-enhanced
+[submodule "slack-desktop"]
+	path = slack-desktop
+	url = https://aur.archlinux.org/slack-desktop
+[submodule "colormake"]
+	path = colormake
+	url = https://aur.archlinux.org/colormake
