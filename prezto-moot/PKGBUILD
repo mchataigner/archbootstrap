@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
 pkgrel=1
-pkgver=r1895.704fc46c
+pkgver=r1991.1875ddb5
 pkgname=prezto-moot
 pkgdesc="Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes."
 url="https://github.com/mchataigner/prezto/"
@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('zsh>=4.3.17', 'perl')
 makedepends=('git' 'coreutils' 'sed')
-source=('git://github.com/sorin-ionescu/prezto.git' 'install' 'prompt_moot_setup')
+source=('git+https://github.com/sorin-ionescu/prezto.git' 'install' 'prompt_moot_setup')
 options=('!strip')
 provides=('prezto')
 conflicts=('prezto-git' 'grml-zsh-config')
