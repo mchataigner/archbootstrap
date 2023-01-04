@@ -142,3 +142,9 @@
 [submodule "colormake"]
 	path = colormake
 	url = https://aur.archlinux.org/colormake
+[submodule "pscale-cli"]
+	path = pscale-cli
+	url = https://aur.archlinux.org/pscale-cli
+[submodule "btrfsmaintenance"]
+	path = btrfsmaintenance
+	url = https://aur.archlinux.org/btrfsmaintenance
