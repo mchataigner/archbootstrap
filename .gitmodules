@@ -148,3 +148,9 @@
 [submodule "btrfsmaintenance"]
 	path = btrfsmaintenance
 	url = https://aur.archlinux.org/btrfsmaintenance
+[submodule "teams"]
+	path = teams
+	url = https://aur.archlinux.org/teams
+[submodule "python-onkyo-eiscp"]
+	path = python-onkyo-eiscp
+	url = https://aur.archlinux.org/python-onkyo-eiscp
