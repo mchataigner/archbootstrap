@@ -154,3 +154,6 @@
 [submodule "python-onkyo-eiscp"]
 	path = python-onkyo-eiscp
 	url = https://aur.archlinux.org/python-onkyo-eiscp
+[submodule "ttf-openlogos-archupdate"]
+	path = ttf-openlogos-archupdate
+	url = https://aur.archlinux.org/ttf-openlogos-archupdate
