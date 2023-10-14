@@ -157,3 +157,6 @@
 [submodule "ttf-openlogos-archupdate"]
 	path = ttf-openlogos-archupdate
 	url = https://aur.archlinux.org/ttf-openlogos-archupdate
+[submodule "autojump-rs"]
+	path = autojump-rs
+	url = https://aur.archlinux.org/autojump-rs
