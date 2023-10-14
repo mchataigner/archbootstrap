@@ -22,9 +22,6 @@
 [submodule "python-ovh"]
 	path = python-ovh
 	url = https://aur.archlinux.org/python-ovh.git
-[submodule "autojump"]
-	path = autojump
-	url = https://aur.archlinux.org/autojump.git
 [submodule "hollywood"]
 	path = hollywood
 	url = https://aur.archlinux.org/hollywood.git

@@ -14,7 +14,7 @@ _gitname='moot-base'
 package() {
   depends+=(
     'arch-install-scripts'
-#    'autojump'
+    'autojump-rs'
     'bash-completion'
     'bind-tools'
 #    'btrfs-progs'
