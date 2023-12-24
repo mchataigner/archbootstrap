@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
 pkgrel=1
-pkgver=r1997.e3a9583f
+pkgver=r2030.95d083d
 pkgname=prezto-moot
 pkgdesc="Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes."
 url="https://github.com/mchataigner/prezto/"
@@ -9,14 +9,13 @@ arch=('any')
 license=('MIT')
 depends=('zsh>=4.3.17', 'perl')
 makedepends=('git' 'coreutils' 'sed')
-source=('git+https://github.com/sorin-ionescu/prezto.git' 'install' 'prompt_moot_setup')
+source=('git+https://github.com/mchataigner/prezto.git' 'install')
 options=('!strip')
 provides=('prezto')
 conflicts=('prezto-git' 'grml-zsh-config')
 install='install'
 md5sums=('SKIP'
-         '55b6cb40de22eabd8e44caa987ae3340'
-		 '66849abf2c9b110e280097d8040e062a')
+         '55b6cb40de22eabd8e44caa987ae3340')
 _gitname='prezto'
 
 backup=('etc/zsh/zlogin' 'etc/zsh/zlogout' 'etc/zsh/zprestorc' 'etc/zsh/zshenv' 'etc/zsh/zshrc')
@@ -51,6 +50,8 @@ build() {
   done
 
   cat > $srcdir/etc/zsh/zpreztorc <<EOF
+[[ $TERM == "dumb" ]] && unsetopt zle && return
+
 source /usr/lib/prezto/runcoms/zpreztorc
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 
@@ -98,7 +99,4 @@ package() {
   
   mkdir -p $pkgdir/etc
   cp -r $srcdir/etc/zsh $pkgdir/etc
-
-  mkdir -p $pkgdir/usr/lib/prezto/modules/prompt/functions
-  cp $srcdir/prompt_moot_setup $pkgdir/usr/lib/prezto/modules/prompt/functions/
 }
