@@ -157,3 +157,6 @@
 [submodule "autojump-rs"]
 	path = autojump-rs
 	url = https://aur.archlinux.org/autojump-rs
+[submodule "raw-thumbnailer"]
+	path = raw-thumbnailer
+	url = https://aur.archlinux.org/raw-thumbnailer
