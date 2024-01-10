@@ -160,3 +160,6 @@
 [submodule "raw-thumbnailer"]
 	path = raw-thumbnailer
 	url = https://aur.archlinux.org/raw-thumbnailer
+[submodule "yubikey-agent"]
+	path = yubikey-agent
+	url = https://aur.archlinux.org/yubikey-agent
