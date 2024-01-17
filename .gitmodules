@@ -163,3 +163,15 @@
 [submodule "yubikey-agent"]
 	path = yubikey-agent
 	url = https://aur.archlinux.org/yubikey-agent
+[submodule "cnijfilter2"]
+	path = cnijfilter2
+	url = https://aur.archlinux.org/cnijfilter2.git
+[submodule "cups-bjnp"]
+	path = cups-bjnp
+	url = https://aur.archlinux.org/cups-bjnp.git
+[submodule "homeassistant-supervised"]
+	path = homeassistant-supervised
+	url = https://aur.archlinux.org/homeassistant-supervised
+[submodule "homeassistant-osagent"]
+	path = homeassistant-osagent
+	url = https://aur.archlinux.org/homeassistant-osagent
