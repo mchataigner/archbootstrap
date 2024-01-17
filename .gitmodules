@@ -175,3 +175,9 @@
 [submodule "homeassistant-osagent"]
 	path = homeassistant-osagent
 	url = https://aur.archlinux.org/homeassistant-osagent
+[submodule "paperless-ngx"]
+	path = paperless-ngx
+	url = https://aur.archlinux.org/paperless-ngx
+[submodule "ocrmypdf"]
+	path = ocrmypdf
+	url = https://aur.archlinux.org/ocrmypdf
