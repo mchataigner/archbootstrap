@@ -1,7 +1,7 @@
 # Maintainer: Mathieu Chataigner <mathieu.chataigner@gmail.com>
 
 pkgrel=1
-pkgver=r2030.95d083d
+pkgver=r2047.3ff610d
 pkgname=prezto-moot
 pkgdesc="Prezto is the configuration framework for Zsh; it enriches the command line interface environment with sane defaults, aliases, functions, auto completion, and prompt themes."
 url="https://github.com/mchataigner/prezto/"

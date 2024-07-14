@@ -181,3 +181,6 @@
 [submodule "ocrmypdf"]
 	path = ocrmypdf
 	url = https://aur.archlinux.org/ocrmypdf
+[submodule "prezto-contrib-git"]
+	path = prezto-contrib-git
+	url = https://aur.archlinux.org/prezto-contrib-git
