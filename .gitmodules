@@ -184,3 +184,6 @@
 [submodule "prezto-contrib-git"]
 	path = prezto-contrib-git
 	url = https://aur.archlinux.org/prezto-contrib-git
+[submodule "aws-cli-v2"]
+	path = aws-cli-v2
+	url = https://aur.archlinux.org/aws-cli-v2
