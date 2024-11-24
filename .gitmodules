@@ -187,3 +187,12 @@
 [submodule "aws-cli-v2"]
 	path = aws-cli-v2
 	url = https://aur.archlinux.org/aws-cli-v2
+[submodule "coredns"]
+	path = coredns
+	url = https://aur.archlinux.org/coredns
+[submodule "coredns-git"]
+	path = coredns-git
+	url = https://aur.archlinux.org/coredns-git
+[submodule "ventoy-bin"]
+	path = ventoy-bin
+	url = https://aur.archlinux.org/ventoy-bin
