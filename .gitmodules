@@ -196,3 +196,6 @@
 [submodule "ventoy-bin"]
 	path = ventoy-bin
 	url = https://aur.archlinux.org/ventoy-bin
+[submodule "lldap-bin"]
+	path = lldap-bin
+	url = https://aur.archlinux.org/lldap-bin
