@@ -199,3 +199,12 @@
 [submodule "lldap-bin"]
 	path = lldap-bin
 	url = https://aur.archlinux.org/lldap-bin
+[submodule "rate-mirrors"]
+	path = rate-mirrors
+	url = https://aur.archlinux.org/rate-mirrors
+[submodule "xcaddy"]
+	path = xcaddy
+	url = https://aur.archlinux.org/xcaddy
+[submodule "forgejo-runner"]
+	path = forgejo-runner
+	url = https://aur.archlinux.org/forgejo-runner.git
