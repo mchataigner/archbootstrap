@@ -208,3 +208,6 @@
 [submodule "forgejo-runner"]
 	path = forgejo-runner
 	url = https://aur.archlinux.org/forgejo-runner.git
+[submodule "ast-grep"]
+	path = ast-grep
+	url = https://aur.archlinux.org/ast-grep.git
