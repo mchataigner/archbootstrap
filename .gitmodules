@@ -211,3 +211,9 @@
 [submodule "ast-grep"]
 	path = ast-grep
 	url = https://aur.archlinux.org/ast-grep.git
+[submodule "zfs-dkms"]
+	path = zfs-dkms
+	url = https://aur.archlinux.org/zfs-dkms
+[submodule "zfs-utils"]
+	path = zfs-utils
+	url = https://aur.archlinux.org/zfs-utils
