@@ -217,3 +217,9 @@
 [submodule "zfs-utils"]
 	path = zfs-utils
 	url = https://aur.archlinux.org/zfs-utils
+[submodule "zen-browser-bin"]
+	path = zen-browser-bin
+	url = https://aur.archlinux.org/zen-browser-bin
+[submodule "paru-bin"]
+	path = paru-bin
+	url = https://aur.archlinux.org/paru-bin
