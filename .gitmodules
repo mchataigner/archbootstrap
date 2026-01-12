@@ -223,3 +223,84 @@
 [submodule "paru-bin"]
 	path = paru-bin
 	url = https://aur.archlinux.org/paru-bin
+[submodule "localsend"]
+	path = localsend
+	url = https://aur.archlinux.org/localsend
+[submodule "localsend-bin"]
+	path = localsend-bin
+	url = https://aur.archlinux.org/localsend-bin
+[submodule "walker-bin"]
+	path = walker-bin
+	url = https://aur.archlinux.org/walker-bin
+[submodule "yay-bin"]
+	path = yay-bin
+	url = https://aur.archlinux.org/yay-bin
+[submodule "1password"]
+	path = 1password
+	url = https://aur.archlinux.org/1password
+[submodule "1password-cli"]
+	path = 1password-cli
+	url = https://aur.archlinux.org/1password-cli
+[submodule "tui-1password-git"]
+	path = tui-1password-git
+	url = https://aur.archlinux.org/tui-1password-git
+[submodule "elephant-bin"]
+	path = elephant-bin
+	url = https://aur.archlinux.org/elephant-bin
+[submodule "mistral-vibe"]
+	path = mistral-vibe
+	url = https://aur.archlinux.org/mistral-vibe
+[submodule "mistral-vibe-hardened"]
+	path = mistral-vibe-hardened
+	url = https://aur.archlinux.org/mistral-vibe-hardened
+[submodule "pvetui-bin"]
+	path = pvetui-bin
+	url = https://aur.archlinux.org/pvetui-bin
+[submodule "wezterm-git"]
+	path = wezterm-git
+	url = https://aur.archlinux.org/wezterm-git
+[submodule "elephant-all"]
+	path = elephant-all
+	url = https://aur.archlinux.org/elephant-all
+[submodule "uniflash"]
+	path = uniflash
+	url = https://aur.archlinux.org/uniflash
+[submodule "claude-code"]
+	path = claude-code
+	url = https://aur.archlinux.org/claude-code
+[submodule "antigravity"]
+	path = antigravity
+	url = https://aur.archlinux.org/antigravity
+[submodule "kdecodexbar"]
+	path = kdecodexbar
+	url = https://aur.archlinux.org/kdecodexbar
+[submodule "opencode"]
+	path = opencode
+	url = https://aur.archlinux.org/opencode
+[submodule "opencode-bin"]
+	path = opencode-bin
+	url = https://aur.archlinux.org/opencode-bin
+[submodule "noi-desktop-bin"]
+	path = noi-desktop-bin
+	url = https://aur.archlinux.org/noi-desktop-bin
+[submodule "witr-bin"]
+	path = witr-bin
+	url = https://aur.archlinux.org/witr-bin
+[submodule "sqlit"]
+	path = sqlit
+	url = https://aur.archlinux.org/sqlit
+[submodule "lan-mouse-git"]
+	path = lan-mouse-git
+	url = https://aur.archlinux.org/lan-mouse-git
+[submodule "openbao-bin"]
+	path = openbao-bin
+	url = https://aur.archlinux.org/openbao-bin
+[submodule "openbao"]
+	path = openbao
+	url = https://aur.archlinux.org/openbao
+[submodule "terraform-ls-bin"]
+	path = terraform-ls-bin
+	url = https://aur.archlinux.org/terraform-ls-bin
+[submodule "tofu-ls-bin"]
+	path = tofu-ls-bin
+	url = https://aur.archlinux.org/tofu-ls-bin
